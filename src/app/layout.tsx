@@ -1,5 +1,7 @@
-import "bootstrap/dist/css/bootstrap.css";
-import BootstrapClient from "@/app/ui/bootstrap-client";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@/app/styles/css/style.css";
+import "leaflet/dist/leaflet.css";
+import BootstrapClient from "@/app/components/BootStrapClient";
 
 export const metadata = {
   title: "Next.js",
