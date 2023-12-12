@@ -1,12 +1,9 @@
-"use client";
-
-import SideBar from "@/app/components/SideBar";
-import Header from "@/app/components/Header";
+import Header from '@/app/components/organisms/Header';
 // import Map from "./components/Map";
-import * as L from "leaflet";
-import { useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import SideBarContainer from '@/app/containers/SideBarContainer';
+import MapContainer from '@/app/containers/MapContainer';
 
 export default function Home() {
   // useEffect(() => {
@@ -35,197 +32,8 @@ export default function Home() {
       data-header-position="absolute"
       data-boxed-layout="full"
     >
-      <header className="topbar" data-navbarbg="skin6">
-        <nav className="navbar top-navbar navbar-expand-md navbar-light">
-          <div className="navbar-header" data-logobg="skin6">
-            <Link className="navbar-brand" href="#">
-              <b className="logo-icon">
-                <Image
-                  src="/assets/images/logo-icon.png"
-                  alt="homepage"
-                  width={31}
-                  height={31}
-                  className="dark-logo"
-                />
-                <Image
-                  src="/assets/images/logo-light-icon.png"
-                  alt="homepage"
-                  width={31}
-                  height={31}
-                  className="light-logo"
-                />
-              </b>
-              <span className="logo-text">
-                <Image
-                  src="/assets/images/logo-text.png"
-                  alt="homepage"
-                  width={92}
-                  height={19}
-                  className="dark-logo"
-                />
-                <Image
-                  src="/assets/images/logo-light-text.png"
-                  className="light-logo"
-                  width={92}
-                  height={19}
-                  alt="homepage"
-                />
-              </span>
-            </Link>
-            <Link
-              className="nav-toggler waves-effect waves-light d-block d-md-none"
-              href="#"
-            >
-              <i className="mdi mdi-menu"></i>
-            </Link>
-          </div>
-          <div
-            className="navbar-collapse collapse"
-            id="navbarSupportedContent"
-            data-navbarbg="skin5"
-          >
-            <ul className="navbar-nav float-start me-auto">
-              <li className="nav-item search-box">
-                {" "}
-                <Link className="nav-link waves-effect waves-dark" href="#">
-                  <i className="mdi mdi-magnify me-1"></i>{" "}
-                  <span className="font-16">Search</span>
-                </Link>
-                <form className="app-search position-absolute">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search &amp; enter"
-                  />{" "}
-                  <Link href="/" className="srh-btn">
-                    <i className="mdi mdi-window-close"></i>
-                  </Link>
-                </form>
-              </li>
-            </ul>
-            <ul className="navbar-nav float-end">
-              <li className="nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <Image
-                    src="/assets/images/users/profile.png"
-                    alt="user"
-                    className="rounded-circle"
-                    width={31}
-                    height={31}
-                  />
-                </Link>
-                <ul
-                  className="dropdown-menu dropdown-menu-end user-dd animated"
-                  aria-labelledby="navbarDropdown"
-                >
-                  <Link className="dropdown-item" href="/pages-profile">
-                    <i className="ti-user tw-mr-5 tw-ml-5"></i>
-                    My Profile
-                  </Link>
-                  <Link className="dropdown-item" href="#">
-                    <i className="ti-wallet tw-mr-5 tw-ml-5"></i>
-                    My Balance
-                  </Link>
-                  <Link className="dropdown-item" href="#">
-                    <i className="ti-email tw-mr-5 tw-ml-5"></i>
-                    Inbox
-                  </Link>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <aside className="left-sidebar" data-sidebarbg="skin6">
-        <div className="scroll-sidebar">
-          <nav className="sidebar-nav">
-            <ul id="sidebarnav">
-              <li className="sidebar-item">
-                {" "}
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="#"
-                  aria-expanded="false"
-                >
-                  <i className="mdi mdi-view-dashboard"></i>
-                  <span className="hide-menu">Dashboard</span>
-                </a>
-              </li>
-              <li className="sidebar-item">
-                {" "}
-                <Link
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/pages-profile"
-                  aria-expanded="false"
-                >
-                  <i className="mdi mdi-account-network"></i>
-                  <span className="hide-menu">Profile</span>
-                </Link>
-              </li>
-              <li className="sidebar-item">
-                {" "}
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/table-basic"
-                  aria-expanded="false"
-                >
-                  <i className="mdi mdi-border-all"></i>
-                  <span className="hide-menu">Table</span>
-                </a>
-              </li>
-              <li className="sidebar-item">
-                {" "}
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="#"
-                  aria-expanded="false"
-                >
-                  <i className="mdi mdi-face"></i>
-                  <span className="hide-menu">Icon</span>
-                </a>
-              </li>
-              <li className="sidebar-item">
-                {" "}
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="#"
-                  aria-expanded="false"
-                >
-                  <i className="mdi mdi-file" />
-                  <span className="hide-menu">Blank</span>
-                </a>
-              </li>
-              <li className="sidebar-item">
-                {" "}
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="#"
-                  aria-expanded="false"
-                >
-                  <i className="mdi mdi-alert-outline"></i>
-                  <span className="hide-menu">404</span>
-                </a>
-              </li>
-              <li className="text-center p-40 upgrade-btn">
-                <a
-                  href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/"
-                  className="btn d-block w-100 btn-danger text-white"
-                  target="_blank"
-                >
-                  Upgrade to Pro
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
+      <Header />
+      <SideBarContainer />
       <div className="page-wrapper">
         <div className="page-breadcrumb">
           <div className="row align-items-center">
@@ -244,7 +52,7 @@ export default function Home() {
               </nav>
               <h1 className="tw-h1 tw-text-3xl tw-mb-0 fw-bold">Dashboard</h1>
             </div>
-            <div className="col-6">
+            {/* <div className="col-6">
               <div className="text-end upgrade-btn">
                 <Link
                   href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/"
@@ -254,7 +62,7 @@ export default function Home() {
                   Upgrade to Pro
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="container-fluid">
@@ -262,12 +70,11 @@ export default function Home() {
             <div className="col-lg-8">
               <div className="card">
                 <div className="card-body">
-                  <div className="d-md-flex align-items-center">
+                  <MapContainer />
+                  {/* <div className="d-md-flex align-items-center">
                     <div>
                       <h4 className="card-title">Sales Summary</h4>
-                      <h6 className="card-subtitle">
-                        Ample admin Vs Pixel admin
-                      </h6>
+                      <h6 className="card-subtitle">Ample admin Vs Pixel admin</h6>
                     </div>
                     <div className="ms-auto d-flex no-block align-items-center">
                       <ul className="list-inline dl d-flex align-items-center tw-mr-15 tw-mb-0">
@@ -279,10 +86,7 @@ export default function Home() {
                         </li>
                       </ul>
                     </div>
-                  </div>
-                  <div className="amp-pxl mt-4" style={{ height: "350px" }}>
-                    <div className="chartist-tooltip"></div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -363,9 +167,7 @@ export default function Home() {
                   <div className="d-md-flex">
                     <div>
                       <h4 className="card-title">Top Selling Products</h4>
-                      <h5 className="card-subtitle">
-                        Overview of Top Selling Items
-                      </h5>
+                      <h5 className="card-subtitle">Overview of Top Selling Items</h5>
                     </div>
                     <div className="ms-auto">
                       <div className="dl">
@@ -431,9 +233,7 @@ export default function Home() {
                                 </Link>
                               </div>
                               <div className="">
-                                <h4 className="tw-mb-0 font-16">
-                                  Monster Admin
-                                </h4>
+                                <h4 className="tw-mb-0 font-16">Monster Admin</h4>
                               </div>
                             </div>
                           </td>
@@ -460,18 +260,14 @@ export default function Home() {
                                 </Link>
                               </div>
                               <div className="">
-                                <h4 className="tw-mb-0 font-16">
-                                  Material Pro Admin
-                                </h4>
+                                <h4 className="tw-mb-0 font-16">Material Pro Admin</h4>
                               </div>
                             </div>
                           </td>
                           <td>Single Use</td>
                           <td>John Doe</td>
                           <td>
-                            <label className="badge bg-success">
-                              Bootstrap
-                            </label>
+                            <label className="badge bg-success">Bootstrap</label>
                           </td>
                           <td>46</td>
                           <td>356</td>
@@ -533,14 +329,11 @@ export default function Home() {
                     <div className="comment-text w-100">
                       <h6 className="font-medium">James Anderson</h6>
                       <span className="tw-mb-15 d-block">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.{" "}
+                        Lorem Ipsum is simply dummy text of the printing and type setting industry.{' '}
                       </span>
                       <div className="comment-footer">
-                        <span className="text-muted float-end">
-                          April 14, 2021
-                        </span>{" "}
-                        <span className="badge bg-primary">Pending</span>{" "}
+                        <span className="text-muted float-end">April 14, 2021</span>{' '}
+                        <span className="badge bg-primary">Pending</span>{' '}
                         <span className="action-icons">
                           <Link href="#">
                             <i className="ti-pencil-alt"></i>
@@ -568,13 +361,10 @@ export default function Home() {
                     <div className="comment-text active w-100">
                       <h6 className="font-medium">Michael Jorden</h6>
                       <span className="tw-mb-15 d-block">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.{" "}
+                        Lorem Ipsum is simply dummy text of the printing and type setting industry.{' '}
                       </span>
                       <div className="comment-footer ">
-                        <span className="text-muted float-end">
-                          April 14, 2021
-                        </span>
+                        <span className="text-muted float-end">April 14, 2021</span>
                         <span className="badge bg-success">Approved</span>
                         <span className="action-icons active">
                           <Link href="#">
@@ -603,13 +393,10 @@ export default function Home() {
                     <div className="comment-text w-100">
                       <h6 className="font-medium">Johnathan Doeting</h6>
                       <span className="tw-mb-15 d-block">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.{" "}
+                        Lorem Ipsum is simply dummy text of the printing and type setting industry.{' '}
                       </span>
                       <div className="comment-footer">
-                        <span className="text-muted float-end">
-                          April 14, 2021
-                        </span>
+                        <span className="text-muted float-end">April 14, 2021</span>
                         <span className="badge bg-danger">Rejected</span>
                         <span className="action-icons">
                           <Link href="#">
@@ -708,7 +495,7 @@ export default function Home() {
           </div>
         </div>
         <footer className="footer text-center">
-          All Rights Reserved by Flexy Admin. Designed and Developed by{" "}
+          All Rights Reserved by Flexy Admin. Designed and Developed by{' '}
           <a href="https://www.wrappixel.com">WrapPixel</a>.
         </footer>
       </div>
