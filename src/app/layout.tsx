@@ -1,7 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "@/app/styles/css/style.css";
+import "../../public/dist/css/style.min.css";
+import "../../public/assets/libs/chartist/dist/chartist.min.css";
+import "../../public/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css";
+
+import "./global.css";
 import "leaflet/dist/leaflet.css";
 import BootstrapClient from "@/app/components/BootStrapClient";
+import Script from "next/script";
 
 export const metadata = {
   title: "Next.js",
@@ -18,6 +23,14 @@ export default function RootLayout({
       <body>
         {children}
         <BootstrapClient />
+        <Script src="/assets/libs/jquery/dist/jquery.min.js" />
+        <Script src="/dist/js/app-style-switcher.js" />
+        <Script src="/dist/js/waves.js" />
+        <Script src="/dist/js/sidebarmenu.js" />
+        <Script src="/dist/js/custom.js" />
+        <Script src="/assets/libs/chartist/dist/chartist.min.js" />
+        <Script src="/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js" />
+        <Script src="/dist/js/pages/dashboards/dashboard1.js" />
       </body>
     </html>
   );
