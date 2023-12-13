@@ -9,7 +9,7 @@ export default function page() {
   const toastId = nanoid();
 
   useEffect(() => {
-    toast('새로고침 했습니다!', {
+    toast('페이지를 새로고침 했습니다!', {
       position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
