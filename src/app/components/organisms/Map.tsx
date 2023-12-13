@@ -2,11 +2,13 @@
 
 import { CSSProperties } from 'react';
 import * as L from 'leaflet';
+import TileLayerButtonsContainer from '@/app/containers/TileLayerButtonsContainer';
 
 const mapStyles: CSSProperties = {
   overflow: 'hidden',
   width: '100%',
   height: '100%',
+  borderRadius: '20px',
 };
 
 type Props = {
@@ -27,9 +29,10 @@ export default function Map({ currentMap }: Props) {
           transition: '0.3s ease',
           top: 0,
           zIndex: 0,
-          height: '500px',
+          height: '600px',
         }}
       />
+      <TileLayerButtonsContainer layers={['google_satellite', 'leaflet_dark', 'leaflet_osm']} />
     </>
   );
 }
