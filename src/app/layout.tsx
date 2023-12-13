@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../public/dist/css/style.min.css';
 import '../../public/assets/libs/chartist/dist/chartist.min.css';
 import '../../public/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import 'leaflet/dist/leaflet.css';
 import BootstrapClient from '@/app/components/BootStrapClient';
@@ -9,6 +11,10 @@ import './global.css';
 import Script from 'next/script';
 
 import { Lexend } from 'next/font/google';
+import SideBarContainer from './containers/SideBarContainer';
+import Header from './components/organisms/Header';
+import Breadcrumb from './components/organisms/Breadcrumb';
+import MainWrapper from './components/organisms/MainWrapper';
 
 const lexend = Lexend({ subsets: ['latin-ext'], weight: ['300', '700'] });
 
@@ -20,10 +26,19 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${lexend.className} antialiased`}>
-        {children}
+      <body className={`${lexend.className} antialiased no-scrollbar`}>
+        <MainWrapper>
+          <Header />
+          <div className="page-wrapper">
+            <SideBarContainer />
+            <Breadcrumb />
+            {children}
+          </div>
+        </MainWrapper>
         <BootstrapClient />
         <Script src="/assets/libs/jquery/dist/jquery.min.js" />
+        <ToastContainer />
+
         {/* <Script src="/dist/js/app-style-switcher.js" />
         <Script src="/dist/js/waves.js" />
         <Script src="/dist/js/sidebarmenu.js" />
