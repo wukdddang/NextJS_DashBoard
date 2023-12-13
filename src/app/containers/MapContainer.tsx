@@ -3,8 +3,8 @@
 import * as L from 'leaflet';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import Map from '@/app/components/organisms/Map';
-import { MAP_TILES } from '@/constants/MapTiles';
-import { isCurrentMapExist, isTileLayerExist } from '@/types/TypePredicate';
+import { MAP_TILES } from '@/app/constants/MapTiles';
+import { isCurrentMapExist, isTileLayerExist } from '@/app/types/TypePredicate';
 
 export default function MapContainer() {
   const mapRef = useRef<L.Map | null>(null);
