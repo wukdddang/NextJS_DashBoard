@@ -1,6 +1,9 @@
+import getPascalCase from '@/app/utils/getPascalCase';
 import Link from 'next/link';
 
-export default function Breadcrumb() {
+export default function Breadcrumb({ pathName }: { pathName: string }) {
+  const pageName = pathName === '/' ? 'Dashboard' : getPascalCase(pathName.replace('/', ''));
+
   return (
     <div className="page-breadcrumb">
       <div className="row align-items-center">
@@ -13,11 +16,11 @@ export default function Breadcrumb() {
                 </Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                Dashboard
+                {pageName}
               </li>
             </ol>
           </nav>
-          <h1 className="tw-h1 fw-bold tw-mb-0 tw-text-3xl">Dashboard</h1>
+          <h1 className="tw-h1 fw-bold tw-mb-0 tw-text-3xl">{pageName}</h1>
         </div>
       </div>
     </div>

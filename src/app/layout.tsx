@@ -13,7 +13,7 @@ import Script from 'next/script';
 import { Lexend } from 'next/font/google';
 import SideBarContainer from './containers/SideBarContainer';
 import Header from './components/organisms/Header';
-import Breadcrumb from './components/organisms/Breadcrumb';
+// import Breadcrumb from './components/organisms/Breadcrumb';
 import MainWrapper from './components/organisms/MainWrapper';
 
 const lexend = Lexend({ subsets: ['latin-ext'], weight: ['300', '700'] });
@@ -31,7 +31,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <div className="page-wrapper">
             <SideBarContainer />
-            <Breadcrumb />
             {children}
           </div>
         </MainWrapper>

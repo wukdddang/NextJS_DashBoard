@@ -1,23 +1,29 @@
+'use client';
+
 // import Header from '@/app/components/organisms/Header';
 // import Map from "./components/Map";
 import Image from 'next/image';
 import Link from 'next/link';
 // import SideBarContainer from '@/app/containers/SideBarContainer';
 import dynamic from 'next/dynamic';
+import Breadcrumb from './components/organisms/Breadcrumb';
+import { usePathname } from 'next/navigation';
 // import Breadcrumb from './components/organisms/Breadcrumb';
 
 const MapContainer = dynamic(() => import('@/app/containers/MapContainer'), { ssr: false });
 
 export default function Home() {
+  const pathName = usePathname();
+
   return (
     <>
+      <Breadcrumb pathName={pathName} />
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-8">
             <div className="card">
-              <div className="card-body">
-                <MapContainer />
-                {/* <div className="d-md-flex align-items-center">
+              <MapContainer />
+              {/* <div className="d-md-flex align-items-center">
                     <div>
                       <h4 className="card-title">Sales Summary</h4>
                       <h6 className="card-subtitle">Ample admin Vs Pixel admin</h6>
@@ -33,7 +39,6 @@ export default function Home() {
                       </ul>
                     </div>
                   </div> */}
-              </div>
             </div>
           </div>
           <div className="col-lg-4">
