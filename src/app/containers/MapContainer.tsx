@@ -63,9 +63,11 @@ export default function MapContainer() {
 
   useEffect(() => {
     if (isCurrentMapExist(mapRef.current)) {
+      const currentMap = mapRef.current;
+
       // currentEqPoints 배열에 있는 각 지점에 대한 마커를 생성하고 맵에 추가합니다.
       currentEqPoints.forEach((point) => {
-        const marker = L.marker([point.lat, point.lng], { icon: customIcon }).addTo(mapRef.current);
+        const marker = L.marker([point.lat, point.lng], { icon: customIcon }).addTo(currentMap);
 
         marker.on('click', () => {
           mapRef.current?.setView(marker.getLatLng(), 10); // 10은 새로운 줌 레벨입니다.
