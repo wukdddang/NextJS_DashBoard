@@ -27,7 +27,7 @@ export default function Map({ currentMap }: Props) {
           transition: '0.3s ease',
           top: 0,
           zIndex: 0,
-          height: '100vh',
+          height: '500px',
         }}
       />
     </>

@@ -3,25 +3,11 @@ import Header from '@/app/components/organisms/Header';
 import Image from 'next/image';
 import Link from 'next/link';
 import SideBarContainer from '@/app/containers/SideBarContainer';
-import MapContainer from '@/app/containers/MapContainer';
+import dynamic from 'next/dynamic';
+
+const MapContainer = dynamic(() => import('@/app/containers/MapContainer'), { ssr: false });
 
 export default function Home() {
-  // useEffect(() => {
-  //   // 지도를 초기화합니다.
-  //   if (!window.myMap) {
-  //     const map = L.map("map").setView([51.505, -0.09], 13);
-
-  //     // Add the tile layer to the map.
-  //     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //       maxZoom: 19,
-  //       attribution: "© OpenStreetMap contributors",
-  //     }).addTo(map);
-
-  //     // Store the map in a global variable to prevent re-initialization.
-  //     window.myMap = map;
-  //   }
-  // }, []);
-
   return (
     <div
       id="main-wrapper"
