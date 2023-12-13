@@ -1,8 +1,6 @@
-import * as L from "leaflet";
+import * as L from 'leaflet';
 
-export const isCurrentMapExist = (
-  currentMap: L.Map | null
-): currentMap is L.Map => {
+export const isCurrentMapExist = (currentMap: L.Map | null): currentMap is L.Map => {
   return currentMap !== null;
 };
 
