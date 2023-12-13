@@ -11,7 +11,7 @@ export default function Breadcrumb({ pathName }: { pathName: string }) {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0 d-flex align-items-center">
               <li className="breadcrumb-item">
-                <Link href="#" className="link">
+                <Link href="/" className="link">
                   <i className="mdi mdi-home-outline fs-4"></i>
                 </Link>
               </li>
