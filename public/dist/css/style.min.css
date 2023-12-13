@@ -52,7 +52,7 @@
 }
 body {
   margin: 0;
-  /* font-family: var(--bs-font-sans-serif); */
+  font-family: var(--bs-font-sans-serif);
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.5;
@@ -220,7 +220,7 @@ code,
 kbd,
 pre,
 samp {
-  /* font-family: var(--bs-font-monospace); */
+  font-family: var(--bs-font-monospace);
   font-size: 1em;
   direction: ltr;
   unicode-bidi: bidi-override;
@@ -304,7 +304,7 @@ optgroup,
 select,
 textarea {
   margin: 0;
-  /* font-family: inherit; */
+  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -5158,7 +5158,7 @@ fieldset:disabled .btn {
   z-index: 1070;
   display: block;
   margin: 0;
-  /* font-family: var(--bs-font-sans-serif); */
+  font-family: var(--bs-font-sans-serif);
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5266,7 +5266,7 @@ fieldset:disabled .btn {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  /* font-family: var(--bs-font-sans-serif); */
+  font-family: var(--bs-font-sans-serif);
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6727,7 +6727,7 @@ fieldset:disabled .btn {
   word-break: break-word !important;
 }
 .font-monospace {
-  /* font-family: var(--bs-font-monospace) !important; */
+  font-family: var(--bs-font-monospace) !important;
 }
 .user-select-all {
   -webkit-user-select: all !important;
@@ -9858,7 +9858,7 @@ label {
   align-items: center;
 }
 .page-breadcrumb .breadcrumb .breadcrumb-item + .breadcrumb-item:before {
-  content: '';
+  /* content: ''; */
   /* font-family: themify; */
   color: #ced4da;
   font-size: 11px;
