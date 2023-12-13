@@ -23,22 +23,6 @@ export default function Home() {
           <div className="col-lg-8">
             <div className="card">
               <MapContainer />
-              {/* <div className="d-md-flex align-items-center">
-                    <div>
-                      <h4 className="card-title">Sales Summary</h4>
-                      <h6 className="card-subtitle">Ample admin Vs Pixel admin</h6>
-                    </div>
-                    <div className="ms-auto d-flex no-block align-items-center">
-                      <ul className="list-inline dl d-flex align-items-center tw-mr-15 tw-mb-0">
-                        <li className="list-inline-item d-flex align-items-center text-info">
-                          <i className="fa fa-circle font-10 me-1"></i> Ample
-                        </li>
-                        <li className="list-inline-item d-flex align-items-center text-primary">
-                          <i className="fa fa-circle font-10 me-1"></i> Pixel
-                        </li>
-                      </ul>
-                    </div>
-                  </div> */}
             </div>
           </div>
           <div className="col-lg-4">
