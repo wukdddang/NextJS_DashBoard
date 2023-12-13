@@ -26,7 +26,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${lexend.className} antialiased no-scrollbar`}>
+      <body className={`${lexend.className} no-scrollbar tw-antialiased`}>
         <MainWrapper>
           <Header />
           <div className="page-wrapper">
