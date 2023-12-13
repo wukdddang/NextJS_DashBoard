@@ -1,9 +1,24 @@
-export default function CurrentProcessInfo() {
+'use client';
+
+import getElapsedTime from '@/app/utils/getProcessingTime';
+import { useEffect, useState } from 'react';
+
+export default function CurrentProcessInfo({ startTime }: { startTime: Date }) {
+  const [currentTime, setCurrentTime] = useState<Date>();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="tw-inline-flex tw-gap-4 tw-items-center tw-px-4 tw-py-2 tw-font-semibold tw-leading-5 tw-shadow tw-rounded-md tw-text-white tw-bg-INFO tw-bg-opacity-10 tw-hover:bg-indigo-400 tw-transition tw-ease-in-out tw-duration-150 tw-w-[450px]">
-      <div className="tw-bg-INFO tw-rounded-full">
+    <div className="tw-hover:bg-indigo-400 tw-inline-flex tw-w-[450px] tw-items-center tw-gap-4 tw-rounded-md tw-bg-INFO tw-bg-opacity-10 tw-px-4 tw-py-2 tw-font-semibold tw-leading-5 tw-text-white tw-shadow tw-transition tw-duration-150 tw-ease-in-out">
+      <div className="tw-rounded-full tw-bg-INFO">
         <svg
-          className="tw-flex tw-justify-center tw-w-[50px] tw-h-[50px] tw-items-center tw-animate-spin tw-p-2 tw-text-white tw-opacity-100"
+          className="tw-flex tw-h-[50px] tw-w-[50px] tw-animate-spin tw-items-center tw-justify-center tw-p-2 tw-text-white tw-opacity-100"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -24,12 +39,15 @@ export default function CurrentProcessInfo() {
         </svg>
       </div>
       <div>
-        <span className="tw-text-TEXT tw-text-[18px] tw-tracking-[-1px]">
+        <span className="tw-text-[18px] tw-tracking-[-1px] tw-text-TEXT">
           Images are currently being processed!
         </span>
-        <div className="tw-text-[14px] tw-tracking-[-1px] tw-text-TEXT tw-opacity-50 tw-font-light">
-          <span className="tw-flex">Daejeon, Korea (2023-12-04T05:24:34)</span>
-          <span className="tw-flex">Processing Time: 6h 01m 42s</span>
+        <div className="tw-text-[14px] tw-font-light tw-tracking-[-1px] tw-text-TEXT tw-opacity-50">
+          <span className="tw-flex">Daejeon, Korea ({startTime.toISOString()})</span>
+          <span className="tw-flex">
+            Processing Time: &nbsp;
+            <span>{currentTime ? getElapsedTime(startTime, currentTime) : 'calculating...'}</span>
+          </span>
         </div>
       </div>
     </div>
