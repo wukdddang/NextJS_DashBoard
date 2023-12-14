@@ -9,6 +9,19 @@ const customIcon = L.divIcon({
   iconSize: [100, 100],
 }); // 마커 아이콘 설정
 
+// 펄스 크기를 조정하는 함수
+function adjustPulseSize(zoomLevel: number) {
+  // 여기서는 예시로, 줌 레벨에 따라 다른 클래스를 적용하는 방식을 사용합니다.
+  // 실제로는 클래스 이름과 스타일을 프로젝트에 맞게 조정해야 합니다.
+  let pulseElements = document.querySelectorAll('.pulse');
+
+  console.log(zoomLevel);
+  pulseElements.forEach((pulse) => {
+    // 줌 레벨이 10보다 크면 'large-pulse' 클래스를 추가하거나 제거합니다.
+    pulse.classList.toggle('large-pulse', zoomLevel > 10);
+  });
+}
+
 export default function RippleRing({
   currentMap,
   mag,
@@ -30,8 +43,6 @@ export default function RippleRing({
 
   marker.bindPopup(
     // TODO: Next.js에서 템플릿 문법 적용하는지? (ex. mustache, thymeleaf)
-    // tempDiv.innerHTML
-    // content
     `
       <div class="tw-flex tw-flex-col tw-font-sans tw-p-2 tw-justify-center tw-items-center">
         <div class="tw-flex tw-gap-2">
@@ -64,6 +75,11 @@ export default function RippleRing({
         router.push('/detail');
       });
     }
+  });
+
+  currentMap.on('zoomend', () => {
+    const zoomLevel = currentMap.getZoom();
+    adjustPulseSize(zoomLevel);
   });
 
   return null;
