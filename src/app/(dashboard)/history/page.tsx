@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Breadcrumb from '../components/organisms/Breadcrumb';
+import Breadcrumb from '../../components/organisms/Breadcrumb';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
