@@ -2,9 +2,13 @@ import * as L from 'leaflet';
 import { create } from 'zustand';
 
 export type EqPointsType = {
+  mag: string;
+  location: string;
   lat: number;
   lng: number;
   createdAt: string;
+  isRead: boolean;
+  imageStatus: 'Collecting' | 'Stopped' | 'Collecting1' | 'Paused' | 'Waiting';
 };
 
 interface GlobalState {
