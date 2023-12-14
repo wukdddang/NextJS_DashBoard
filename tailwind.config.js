@@ -19,6 +19,9 @@ module.exports = {
         TEXT: '#252C58',
         ICON: 'A3AED0',
       },
+      fontFamily: {
+        sans: ['var(--font-lexend)'],
+      },
     },
   },
   plugins: [],
