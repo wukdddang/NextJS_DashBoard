@@ -7,8 +7,11 @@ import TileLayerButtonsContainer from '@/app/containers/TileLayerButtonsContaine
 const mapStyles: CSSProperties = {
   overflow: 'hidden',
   width: '100%',
-  height: '100%',
   borderRadius: '20px',
+  transition: '0.3s ease',
+  top: 0,
+  zIndex: 0,
+  height: '600px',
 };
 
 type Props = {
@@ -20,19 +23,9 @@ type Props = {
 
 export default function Map({ currentMap }: Props) {
   return (
-    <>
-      <div
-        id="map"
-        className="position-relative"
-        style={{
-          ...mapStyles,
-          transition: '0.3s ease',
-          top: 0,
-          zIndex: 0,
-          height: '600px',
-        }}
-      />
+    <div className="position-relative">
+      <div id="map" style={{ ...mapStyles }} />
       <TileLayerButtonsContainer layers={['google_satellite', 'leaflet_dark', 'leaflet_osm']} />
-    </>
+    </div>
   );
 }
