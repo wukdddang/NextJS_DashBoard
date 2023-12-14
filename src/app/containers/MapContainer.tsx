@@ -6,12 +6,9 @@ import Map from '@/app/components/organisms/Map';
 import { MAP_TILES } from '@/app/constants/MapTiles';
 import { isCurrentMapExist, isTileLayerExist } from '@/app/types/TypePredicate';
 import useGlobalStore from '@/app/store/GlobalStore';
-
-const customIcon = L.divIcon({
-  className: 'custom-icon',
-  html: '<div class="pulse"></div>',
-  iconSize: [100, 100], // 최대 크기로 설정
-});
+import RippleRing from '@/app/components/organisms/RippleRing';
+// import useMapEventHandler from '@/app/hooks/useMapEventHandler';
+import { useRouter } from 'next/navigation';
 
 export default function MapContainer() {
   const mapRef = useRef<L.Map | null>(null);
@@ -20,6 +17,8 @@ export default function MapContainer() {
   const currentEqPoints = useGlobalStore((state) => state.currentEqPoints);
   const setCurrentMap = useGlobalStore((state) => state.setCurrentMap);
   const setCurrentEqPoints = useGlobalStore((state) => state.setCurrentEqPoints);
+  // const { handleRouteDetail } = useMapEventHandler();
+  const router = useRouter();
 
   const currentTileLayer = 'google_satellite';
 
@@ -65,23 +64,67 @@ export default function MapContainer() {
     if (isCurrentMapExist(mapRef.current)) {
       const currentMap = mapRef.current;
 
-      // currentEqPoints 배열에 있는 각 지점에 대한 마커를 생성하고 맵에 추가합니다.
-      currentEqPoints.forEach((point) => {
-        const marker = L.marker([point.lat, point.lng], { icon: customIcon }).addTo(currentMap);
-
-        marker.on('click', () => {
-          mapRef.current?.setView(marker.getLatLng(), 10); // 10은 새로운 줌 레벨입니다.
+      currentEqPoints.map((point) => {
+        return RippleRing({
+          currentMap,
+          mag: point.mag,
+          location: point.location,
+          lat: point.lat,
+          lng: point.lng,
+          createdAt: point.createdAt,
+          isRead: point.isRead,
+          imageStatus: point.imageStatus,
+          // handleRouteDetail,
+          router,
         });
+        // return (
+        //   <RippleRing
+        //     currentMap={currentMap}
+        //     mag={point.mag}
+        //     location={point.location}
+        //     lat={point.lat}
+        //     lng={point.lng}
+        //     createdAt={point.createdAt}
+        //     isRead={point.isRead}
+        //     imageStatus={point.imageStatus}
+        //   />
+        // );
       });
     }
   }, [currentEqPoints]);
 
   useEffect(() => {
     setCurrentMap(mapRef.current);
+
+    // 데이터 추가 로직
     setCurrentEqPoints([
-      { lat: 36.3504, lng: 127.3845, createdAt: '2023-12-04T05:24:34' },
-      { lat: 69.0648, lng: 18.5151, createdAt: '2024-01-01T11:49:32' },
-      { lat: 8.0883, lng: 77.5385, createdAt: '2024-01-04T01:23:19' },
+      {
+        mag: '6.6',
+        location: 'Daejeon, Korea',
+        lat: 36.3504,
+        lng: 127.3845,
+        createdAt: '2023-12-04T05:24:34',
+        isRead: false,
+        imageStatus: 'Collecting1',
+      },
+      {
+        mag: '6.5',
+        location: 'Bardufoss, Norway',
+        lat: 69.0648,
+        lng: 18.5151,
+        createdAt: '2024-01-01T11:49:32',
+        isRead: false,
+        imageStatus: 'Collecting',
+      },
+      {
+        mag: '6.5',
+        location: 'Kanyakumari, India',
+        lat: 8.0883,
+        lng: 77.5385,
+        createdAt: '2024-01-04T01:23:19',
+        isRead: false,
+        imageStatus: 'Waiting',
+      },
     ]);
   }, []);
 
