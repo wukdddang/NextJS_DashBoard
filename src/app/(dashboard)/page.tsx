@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 // import SideBarContainer from '@/app/containers/SideBarContainer';
 import dynamic from 'next/dynamic';
-import Breadcrumb from './components/organisms/Breadcrumb';
+import Breadcrumb from '@/app/components/organisms/Breadcrumb';
 import { usePathname } from 'next/navigation';
 // import Breadcrumb from './components/organisms/Breadcrumb';
 
@@ -21,9 +21,7 @@ export default function Home() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-8">
-            <div className="card">
-              <MapContainer />
-            </div>
+            <MapContainer />
           </div>
           <div className="col-lg-4">
             <div className="card">
