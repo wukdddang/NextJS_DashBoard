@@ -8,11 +8,11 @@ type Props = {
   // track: UserTracker['track'];
 };
 
-const TileLayers = ({
+export default function TileLayerButtons({
   // setCurrentTileLayer,
   layers,
   // track,
-}: Props) => {
+}: Props) {
   return (
     <div className="tw-absolute tw-bottom-[5%] tw-right-[3%] tw-z-10 tw-flex tw-flex-col tw-gap-[10px]">
       {layers.map((layer) => {
@@ -37,6 +37,4 @@ const TileLayers = ({
       })}
     </div>
   );
-};
-
-export default TileLayers;
+}
