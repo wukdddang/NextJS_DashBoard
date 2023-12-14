@@ -6,7 +6,7 @@ import Map from '@/app/components/organisms/Map';
 import { MAP_TILES } from '@/app/constants/MapTiles';
 import { isCurrentMapExist, isTileLayerExist } from '@/app/types/TypePredicate';
 import useGlobalStore from '@/app/store/GlobalStore';
-import RippleRing from '@/app/components/organisms/RippleRing';
+import generateRippleRing from '@/app/utils/generateRippleRing';
 // import useMapEventHandler from '@/app/hooks/useMapEventHandler';
 import { useRouter } from 'next/navigation';
 
@@ -65,7 +65,7 @@ export default function MapContainer() {
       const currentMap = mapRef.current;
 
       currentEqPoints.map((point) => {
-        return RippleRing({
+        return generateRippleRing({
           currentMap,
           mag: point.mag,
           location: point.location,
