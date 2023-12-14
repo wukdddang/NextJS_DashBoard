@@ -1,14 +1,10 @@
 'use client';
 
-// import Header from '@/app/components/organisms/Header';
-// import Map from "./components/Map";
 import Image from 'next/image';
 import Link from 'next/link';
-// import SideBarContainer from '@/app/containers/SideBarContainer';
 import dynamic from 'next/dynamic';
 import Breadcrumb from '@/app/components/organisms/Breadcrumb';
 import { usePathname } from 'next/navigation';
-// import Breadcrumb from './components/organisms/Breadcrumb';
 
 const MapContainer = dynamic(() => import('@/app/containers/MapContainer'), { ssr: false });
 
