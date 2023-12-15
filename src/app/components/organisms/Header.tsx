@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 import CurrentProcessInfo from './CurrentProcessInfo';
 
 export default function Header() {
@@ -12,7 +12,8 @@ export default function Header() {
           </div>
           <ul className="navbar-nav float-end">
             <li className="nav-item dropdown">
-              <Link
+              {/* TODO: 리팩토링 때 Link 컴포넌트를 사용하도록 수정 */}
+              <a
                 className="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
                 href="#"
                 id="navbarDropdown"
@@ -27,23 +28,23 @@ export default function Header() {
                   width={31}
                   height={31}
                 />
-              </Link>
+              </a>
               <ul
                 className="dropdown-menu dropdown-menu-end user-dd animated"
                 aria-labelledby="navbarDropdown"
               >
-                <Link className="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   <i className="ti-user tw-ml-5 tw-mr-5"></i>
                   My Profile
-                </Link>
-                <Link className="dropdown-item" href="#">
+                </a>
+                <a className="dropdown-item" href="#">
                   <i className="ti-wallet tw-ml-5 tw-mr-5"></i>
                   My Balance
-                </Link>
-                <Link className="dropdown-item" href="/">
+                </a>
+                <a className="dropdown-item" href="/">
                   <i className="ti-email tw-ml-5 tw-mr-5"></i>
                   Inbox
-                </Link>
+                </a>
               </ul>
             </li>
           </ul>
