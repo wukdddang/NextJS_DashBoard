@@ -7,7 +7,6 @@ import { MAP_TILES } from '@/app/constants/MapTiles';
 import { isCurrentMapExist, isTileLayerExist } from '@/app/types/TypePredicate';
 import useGlobalStore from '@/app/store/GlobalStore';
 import generateRippleRing from '@/app/utils/generateRippleRing';
-// import useMapEventHandler from '@/app/hooks/useMapEventHandler';
 import { useRouter } from 'next/navigation';
 
 export default function MapContainer() {
@@ -17,7 +16,6 @@ export default function MapContainer() {
   const currentEqPoints = useGlobalStore((state) => state.currentEqPoints);
   const setCurrentMap = useGlobalStore((state) => state.setCurrentMap);
   const setCurrentEqPoints = useGlobalStore((state) => state.setCurrentEqPoints);
-  // const { handleRouteDetail } = useMapEventHandler();
   const router = useRouter();
 
   const currentTileLayer = 'google_satellite';
@@ -74,21 +72,8 @@ export default function MapContainer() {
           createdAt: point.createdAt,
           isRead: point.isRead,
           imageStatus: point.imageStatus,
-          // handleRouteDetail,
           router,
         });
-        // return (
-        //   <RippleRing
-        //     currentMap={currentMap}
-        //     mag={point.mag}
-        //     location={point.location}
-        //     lat={point.lat}
-        //     lng={point.lng}
-        //     createdAt={point.createdAt}
-        //     isRead={point.isRead}
-        //     imageStatus={point.imageStatus}
-        //   />
-        // );
       });
     }
   }, [currentEqPoints]);
