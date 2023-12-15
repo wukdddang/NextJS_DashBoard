@@ -11,7 +11,7 @@ const mapStyles: CSSProperties = {
   transition: '0.3s ease',
   top: 0,
   zIndex: 0,
-  height: '600px',
+  height: '800px',
 };
 
 type Props = {
