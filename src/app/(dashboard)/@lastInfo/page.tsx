@@ -1,18 +1,11 @@
-'use client';
-
-import { usePathname } from 'next/navigation';
-import { FaLongArrowAltRight } from 'react-icons/fa';
-
 export default function Page() {
-  const pathname = usePathname();
-
   return (
     <div className="card">
       <div className="card-body">
         <div className="table-responsive">
           <div>
             <h4 className="tw-text-[24px] tw-font-bold tw-tracking-[-1px]">
-              Unconfirmed Earthquakes
+              Histories of Last Earthquakes{' '}
             </h4>
           </div>
           <table className="table mb-0 table-hover align-middle text-nowrap">
@@ -89,10 +82,6 @@ export default function Page() {
               </tr>
             </tbody>
           </table>
-          <span className="tw-mt-4 tw-flex tw-items-center tw-justify-end tw-font-bold tw-tracking-[-1px] tw-text-INFO">
-            <FaLongArrowAltRight />
-            view in detail
-          </span>
         </div>
       </div>
     </div>
