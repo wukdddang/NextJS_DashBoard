@@ -12,6 +12,8 @@ import Script from 'next/script';
 
 import { Lexend } from 'next/font/google';
 import React from 'react';
+import SideBarContainer from '@/app/containers/SideBarContainer';
+import Header from './components/organisms/Header';
 
 const lexend = Lexend({
   subsets: ['latin-ext'],
@@ -28,6 +30,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className={`${lexend.variable} no-scrollbar tw-font-sans tw-antialiased`}>
+        <Header />
+        <SideBarContainer />
         {children}
         <BootstrapClient />
         <Script src="/assets/libs/jquery/dist/jquery.min.js" />
