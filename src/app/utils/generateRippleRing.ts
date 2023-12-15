@@ -50,7 +50,13 @@ export default function RippleRing({
           </div>
         </div>
       </div>
-      <div>
+      <div class="tw-flex tw-justify-start tw-items-center">
+        <span class="btn btn-success btn-circle d-flex align-items-center">
+          <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
+        </span>
+        <span>3</span>
+      </div>
+      <div class="tw-flex tw-justify-start tw-items-center">
         <span class="btn btn-success btn-circle d-flex align-items-center">
           <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
         </span>
