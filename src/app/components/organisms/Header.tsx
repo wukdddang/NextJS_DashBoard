@@ -28,6 +28,10 @@ export default function Header() {
                   width={31}
                   height={31}
                 />
+                <div className="tw-flex tw-flex-col">
+                  <span className="tw-h-5 tw-w-5">good</span>
+                  <span>good</span>
+                </div>
               </a>
               <ul
                 className="dropdown-menu dropdown-menu-end user-dd animated"
