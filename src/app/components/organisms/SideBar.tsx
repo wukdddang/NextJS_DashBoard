@@ -1,31 +1,18 @@
 'use client';
 
-import { FaEarthAsia, FaRegFolder } from 'react-icons/fa6';
-import { SlReload } from 'react-icons/sl';
-// import SideBarItemContainer from '@/app/containers/SideBarItemContainer';
-import Link from 'next/link';
+// import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 
-const sideBarItems = [
-  {
-    name: 'Dashboard',
-    href: '/',
-    icon: FaEarthAsia,
-  },
-  {
-    name: 'History',
-    href: '/history',
-    icon: FaRegFolder,
-  },
-  {
-    name: 'Refresh',
-    href: '/refresh',
-    icon: SlReload,
-  },
-];
-
-export default function SideBar() {
+export default function SideBar({
+  sideBarItems,
+}: {
+  sideBarItems: {
+    name: string;
+    href: string;
+    icon: any;
+  }[];
+}) {
   return (
     <nav
       className="bg-white h-100 position-fixed no-scrollbar tw-z-1 tw-left-0 tw-w-[250px] tw-overflow-y-scroll tw-border"
@@ -39,7 +26,8 @@ export default function SideBar() {
           const LinkIcon = sideBarItem.icon;
 
           return (
-            <Link
+            // TODO: 리팩토링할 때, Link 컴포넌트를 사용하도록 수정
+            <a
               key={sideBarItem.name}
               href={sideBarItem.href}
               className={clsx(
@@ -52,12 +40,9 @@ export default function SideBar() {
             >
               <LinkIcon className="tw-w-6" />
               <p className="hidden md:block">{sideBarItem.name}</p>
-            </Link>
+            </a>
           );
         })}
-        {/* <SideBarItemContainer text="Dashboard" icon={<FaEarthAsia size={20} role="Dashboard" />} />
-        <SideBarItemContainer text="History" icon={<FaRegFolder size={20} role="History" />} />
-        <SideBarItemContainer text="Refresh" icon={<SlReload size={20} role="Refresh" />} /> */}
       </div>
     </nav>
   );
