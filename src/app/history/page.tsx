@@ -38,14 +38,27 @@ export default function HistoryPage() {
                     <div className="table-responsive">
                       <table className="table mb-0 table-hover align-middle text-nowrap">
                         <thead>
+                          <tr className="">
+                            <th rowSpan={2} className="border-top-0">
+                              Products
+                            </th>
+                            <th rowSpan={2} className="border-top-0">
+                              License
+                            </th>
+                            <th rowSpan={2} className="border-top-0">
+                              Support Agent
+                            </th>
+                            <th colSpan={2} className="border-top-0 border-bottom-0 tw-text-center">
+                              Performance
+                            </th>
+                            <th rowSpan={2} className="border-top-0">
+                              Earnings
+                            </th>
+                          </tr>
                           <tr>
-                            <th className="border-top-0">Products</th>
-                            <th className="border-top-0">License</th>
-                            <th className="border-top-0">Support Agent</th>
                             <th className="border-top-0">Technology</th>
                             <th className="border-top-0">Tickets</th>
                             <th className="border-top-0">Sales</th>
-                            <th className="border-top-0">Earnings</th>
                           </tr>
                         </thead>
                         <tbody>

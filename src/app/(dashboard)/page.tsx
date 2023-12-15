@@ -2,6 +2,7 @@
 
 import Breadcrumb from '@/app/components/organisms/Breadcrumb';
 import { usePathname } from 'next/navigation';
+import TableHeader from '../components/organisms/TableHeader';
 
 export default function Home() {
   const pathName = usePathname();
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
       <Breadcrumb pathName={pathName} />
+      <TableHeader tableSpan={4} />
     </>
   );
 }
