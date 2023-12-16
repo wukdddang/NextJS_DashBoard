@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SideBarContainer />
         {children}
         <BootstrapClient />
-        <Script src="/assets/libs/jquery/dist/jquery.min.js" />
+        {/* <Script src="/assets/libs/jquery/dist/jquery.min.js" /> */}
         <ToastContainer />
       </body>
     </html>
