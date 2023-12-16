@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import './404.css';
+import Image from 'next/image';
 
 const NotFound: NextPage = () => {
   return (
@@ -7,66 +8,57 @@ const NotFound: NextPage = () => {
       <div className="stars">
         <div className="custom-navbar">
           <div className="brand-logo">
-            <img src="http://salehriaz.com/404Page/img/logo.svg" width="80px" />
-          </div>
-          <div className="navbar-links">
-            <ul>
-              <li>
-                <a href="http://salehriaz.com/404Page/404.html" target="_blank">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="http://salehriaz.com/404Page/404.html" target="_blank">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="http://salehriaz.com/404Page/404.html" target="_blank">
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://salehriaz.com/404Page/404.html"
-                  className="btn-request"
-                  target="_blank"
-                >
-                  Request A Demo
-                </a>
-              </li>
-            </ul>
+            <Image
+              src="http://salehriaz.com/404Page/img/logo.svg"
+              width={80}
+              height={80}
+              alt={'logo'}
+            />
           </div>
         </div>
         <div className="central-body">
-          <img className="image-404" src="http://salehriaz.com/404Page/img/404.svg" width="300px" />
+          <Image
+            className="image-404"
+            src="http://salehriaz.com/404Page/img/404.svg"
+            width={300}
+            height={135}
+            alt={'404'}
+          />
           <a href="http://salehriaz.com/404Page/404.html" className="btn-go-home" target="_blank">
             GO BACK HOME
           </a>
         </div>
         <div className="objects">
-          <img
+          <Image
             className="object_rocket"
             src="http://salehriaz.com/404Page/img/rocket.svg"
-            width="40px"
+            width={40}
+            height={40}
+            alt={'rocket'}
           />
           <div className="earth-moon">
-            <img
+            <Image
               className="object_earth"
               src="http://salehriaz.com/404Page/img/earth.svg"
-              width="100px"
+              width={100}
+              height={100}
+              alt={'earth'}
             />
-            <img
+            <Image
               className="object_moon"
               src="http://salehriaz.com/404Page/img/moon.svg"
-              width="80px"
+              width={80}
+              height={80}
+              alt={'moon'}
             />
           </div>
           <div className="box_astronaut">
-            <img
+            <Image
               className="object_astronaut"
               src="http://salehriaz.com/404Page/img/astronaut.svg"
-              width="140px"
+              width={140}
+              height={140}
+              alt={'astronaut'}
             />
           </div>
         </div>
