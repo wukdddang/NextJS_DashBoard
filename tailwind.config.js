@@ -17,7 +17,7 @@ module.exports = {
         WARN: '#F2C94C',
         INFO: '#5458F7',
         TEXT: '#252C58',
-        ICON: 'A3AED0',
+        ICON: '#A3AED0',
       },
       fontFamily: {
         sans: ['var(--font-lexend)'],
