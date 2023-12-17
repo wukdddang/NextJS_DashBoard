@@ -3,7 +3,6 @@
 import React from 'react';
 import Breadcrumb from '@/app/components/organisms/Breadcrumb';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 import MainWrapper from '@/app/components/organisms/MainWrapper';
 
 export default function HistoryPage() {
@@ -13,7 +12,7 @@ export default function HistoryPage() {
     <>
       <MainWrapper>
         <div className="page-wrapper">
-          <Breadcrumb pathName={pathName} />
+          <Breadcrumb pathname={pathName} />
           <div className="container-fluid">
             <div className="row">
               <div className="col-12">
@@ -21,8 +20,7 @@ export default function HistoryPage() {
                   <div className="card-body">
                     <div className="d-md-flex">
                       <div>
-                        <h4 className="card-title">Top Selling Products</h4>
-                        <h5 className="card-subtitle">Overview of Top Selling Items</h5>
+                        <h4 className="card-title">Histories of Last Earthquakes</h4>
                       </div>
                       <div className="ms-auto">
                         <div className="dl">
@@ -39,47 +37,61 @@ export default function HistoryPage() {
                       <table className="table mb-0 table-hover align-middle text-nowrap">
                         <thead>
                           <tr className="">
-                            <th rowSpan={2} className="border-top-0">
-                              Products
+                            <th rowSpan={2} colSpan={1} className="border-top-0">
+                              Magnitude
                             </th>
                             <th rowSpan={2} className="border-top-0">
-                              License
+                              Date
                             </th>
                             <th rowSpan={2} className="border-top-0">
-                              Support Agent
-                            </th>
-                            <th colSpan={2} className="border-top-0 border-bottom-0 tw-text-center">
-                              Performance
+                              Location
                             </th>
                             <th rowSpan={2} className="border-top-0">
-                              Earnings
+                              Lat.
+                            </th>
+                            <th rowSpan={2} className="border-top-0">
+                              Lng.
+                            </th>
+                            <th rowSpan={2} className="border-top-0">
+                              Processing Status
+                            </th>
+                            <th rowSpan={2} className="border-top-0">
+                              Algorithms
+                            </th>
+                            <th rowSpan={2} className="border-top-0">
+                              Platform
+                            </th>
+                            <th
+                              colSpan={2}
+                              rowSpan={1}
+                              className="border-top-0  border-bottom-0 tw-text-center"
+                            >
+                              Processed Data
                             </th>
                           </tr>
                           <tr>
-                            <th className="border-top-0">Technology</th>
-                            <th className="border-top-0">Tickets</th>
-                            <th className="border-top-0">Sales</th>
+                            <th className="border-top-0">Pre-Data</th>
+                            <th className="border-top-0">Post-Data</th>
+                            <th className="border-top-0">Downloads</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>
                               <div className="d-flex align-items-center">
-                                <div className="tw-mr-10">
-                                  <Link
-                                    href="#"
-                                    className="btn btn-circle d-flex btn-info text-white"
-                                  >
-                                    EA
-                                  </Link>
-                                </div>
-                                <div className="">
-                                  <h4 className="font-16 tw-mb-0">Elite Admin</h4>
-                                </div>
+                                <a href="#" className="btn btn-circle d-flex btn-info text-white">
+                                  6.5
+                                </a>
                               </div>
                             </td>
-                            <td>Single Use</td>
-                            <td>John Doe</td>
+                            <td>2024-01-04T01:23:19</td>
+                            <td>Kanyakumari, India</td>
+                            <td>8.0844°N</td>
+                            <td>77.5495°E</td>
+                            <td>
+                              <label className="badge tw-bg-WARN">Waiting</label>
+                            </td>
+                            <td>D-InSAR</td>
                             <td>
                               <label className="badge bg-danger">Angular</label>
                             </td>
@@ -92,21 +104,17 @@ export default function HistoryPage() {
                           <tr>
                             <td>
                               <div className="d-flex align-items-center">
-                                <div className="tw-mr-10">
-                                  <Link
-                                    href="#"
-                                    className="btn btn-circle d-flex btn-orange text-white"
-                                  >
-                                    MA
-                                  </Link>
-                                </div>
-                                <div className="">
-                                  <h4 className="font-16 tw-mb-0">Monster Admin</h4>
-                                </div>
+                                <a href="#" className="btn btn-circle d-flex btn-orange text-white">
+                                  6.5
+                                </a>
                               </div>
                             </td>
-                            <td>Single Use</td>
-                            <td>Venessa Fern</td>
+                            <td>2024-01-01T11:49:32</td>
+                            <td>Bardufoss, Norway</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
                             <td>
                               <label className="badge bg-info">Vue Js</label>
                             </td>
@@ -120,20 +128,21 @@ export default function HistoryPage() {
                             <td>
                               <div className="d-flex align-items-center">
                                 <div className="tw-mr-10">
-                                  <Link
+                                  <a
                                     href="#"
                                     className="btn btn-circle d-flex btn-success text-white"
                                   >
-                                    MP
-                                  </Link>
-                                </div>
-                                <div className="">
-                                  <h4 className="font-16 tw-mb-0">Material Pro Admin</h4>
+                                    6.6
+                                  </a>
                                 </div>
                               </div>
                             </td>
-                            <td>Single Use</td>
-                            <td>John Doe</td>
+                            <td>2023-12-04T05:24:34</td>
+                            <td>Daejeon, Korea</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
                             <td>
                               <label className="badge bg-success">Bootstrap</label>
                             </td>
@@ -147,20 +156,21 @@ export default function HistoryPage() {
                             <td>
                               <div className="d-flex align-items-center">
                                 <div className="tw-mr-10">
-                                  <Link
+                                  <a
                                     href="#"
                                     className="btn btn-circle d-flex btn-purple text-white"
                                   >
-                                    AA
-                                  </Link>
-                                </div>
-                                <div className="">
-                                  <h4 className="font-16 tw-mb-0">Ample Admin</h4>
+                                    6.5
+                                  </a>
                                 </div>
                               </div>
                             </td>
-                            <td>Single Use</td>
-                            <td>John Doe</td>
+                            <td>2023-12-01T02:41:31</td>
+                            <td>Aira, Japan</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
+                            <td>Kanyakumari, India</td>
                             <td>
                               <label className="badge bg-purple">React</label>
                             </td>
