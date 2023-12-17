@@ -2,6 +2,7 @@
 
 // import Link from 'next/link';
 import clsx from 'clsx';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function SideBar({
@@ -13,6 +14,9 @@ export default function SideBar({
     icon: any;
   }[];
 }) {
+  const pathname = usePathname();
+  // console.log(pathname);
+
   return (
     <nav
       className="bg-white h-100 position-fixed no-scrollbar tw-z-1 tw-left-0 tw-w-[250px] tw-overflow-y-scroll tw-border"
@@ -22,12 +26,11 @@ export default function SideBar({
     >
       <div className="bg-white h-100 position-fixed no-scrollbar tw-z-1 tw-left-0 tw-w-[250px] tw-overflow-y-scroll tw-border">
         {sideBarItems.map((sideBarItem) => {
-          const pathname = usePathname();
           const LinkIcon = sideBarItem.icon;
 
           return (
             // TODO: 리팩토링할 때, Link 컴포넌트를 사용하도록 수정
-            <a
+            <Link
               key={sideBarItem.name}
               href={sideBarItem.href}
               className={clsx(
@@ -40,7 +43,7 @@ export default function SideBar({
             >
               <LinkIcon className="tw-w-6" />
               <p className="hidden md:block">{sideBarItem.name}</p>
-            </a>
+            </Link>
           );
         })}
       </div>

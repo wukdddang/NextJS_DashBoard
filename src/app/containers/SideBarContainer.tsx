@@ -7,7 +7,7 @@ import { SlReload } from 'react-icons/sl';
 
 const sideBarItems = [
   {
-    name: 'Dashboard',
+    name: 'Home',
     href: '/',
     icon: FaEarthAsia,
   },
