@@ -31,6 +31,14 @@ export default function MapContainer() {
     maxBoundsViscosity: 0.9, // 경계를 벗어날 때의 "탄성" 설정 (0에서 1 사이의 값)
   };
 
+  const resetMap = () => {
+    if (isCurrentMapExist(mapRef.current)) {
+      mapRef.current.closePopup();
+      mapRef.current.setView([36, 110.5], 2);
+      // 필요한 경우 여기에 추가적인 초기화 로직을 구현합니다.
+    }
+  };
+
   useEffect(() => {
     mapRef.current = L.map('map', mapParams);
 
@@ -76,7 +84,7 @@ export default function MapContainer() {
         });
       });
     }
-  }, [currentEqPoints]);
+  }, [currentEqPoints, router]);
 
   useEffect(() => {
     setCurrentMap(mapRef.current);
@@ -113,5 +121,5 @@ export default function MapContainer() {
     ]);
   }, []);
 
-  return <Map currentMap={mapRef.current} />;
+  return <Map currentMap={mapRef.current} onResetMap={resetMap} />;
 }
