@@ -13,7 +13,7 @@ const customIcon = L.divIcon({
 function adjustPulseSize(zoomLevel: number) {
   let pulseElements = document.querySelectorAll('.pulse');
 
-  console.log(zoomLevel);
+  // console.log(zoomLevel);
   pulseElements.forEach((pulse) => {
     pulse.classList.toggle('large-pulse', zoomLevel > 10);
   });
@@ -54,13 +54,13 @@ export default function RippleRing({
         <span class="btn btn-success btn-circle d-flex align-items-center">
           <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
         </span>
-        <span>3</span>
+        <span class="tw-font-sans">Pre-Earthquake Image Downloaded </span>
       </div>
       <div class="tw-flex tw-justify-start tw-items-center">
         <span class="btn btn-success btn-circle d-flex align-items-center">
           <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
         </span>
-        <span>3</span>
+        <span class="tw-font-sans">Post-Earthquake Image Downloaded</span>
       </div>
 
       <button id="popup-view-detail-button" class="btn btn-primary tw-ml-auto tw-flex tw-justify-center tw-items-center">
@@ -74,8 +74,8 @@ export default function RippleRing({
     const detailButton = document.querySelector('#popup-view-detail-button');
     if (detailButton) {
       detailButton.addEventListener('click', () => {
-        // console.log('Popup button clicked');
-        router.push(`/detail/?createdAt=${createdAt}&lat=${lat}&lng=${lng}`);
+        router.replace(`/?location=${location}&createdAt=${createdAt}&lat=${lat}&lng=${lng}`);
+        // window.location.href = `/detail/?createdAt=${createdAt}&lat=${lat}&lng=${lng}`;
         // router.push(`/detail`);
       });
     }
