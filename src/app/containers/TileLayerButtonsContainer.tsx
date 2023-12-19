@@ -1,15 +1,13 @@
 import TileLayerButtons from '@/app/components/organisms/TileLayerButtons';
 import { KIND_OF_MAP_TILES } from '@/app/constants/MapTiles';
-// import useTileLayerStore from "@/store/TileLayerStore";
+import useGlobalStore from '@/app/store/GlobalStore';
 
 type Props = {
   layers: KIND_OF_MAP_TILES[];
 };
 
 const TileLayerButtonsContainer = ({ layers }: Props) => {
-  // const setCurrentTileLayer = useTileLayerStore(
-  //   (state) => state.setCurrentTileLayer
-  // );
+  const setCurrentTileLayer = useGlobalStore((state) => state.setCurrentTileLayer);
 
   // const tileLayerLog = () => {
   //   console.log('tile changed');
@@ -17,7 +15,7 @@ const TileLayerButtonsContainer = ({ layers }: Props) => {
 
   return (
     <TileLayerButtons
-      // setCurrentTileLayer={setCurrentTileLayer}
+      setCurrentTileLayer={setCurrentTileLayer}
       layers={layers}
       // track={tileLayerLog}
     />

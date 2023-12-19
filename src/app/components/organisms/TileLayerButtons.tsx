@@ -3,13 +3,13 @@ import Image from 'next/image';
 // import { UserTracker } from '@/domain/model/UserTracker';
 
 type Props = {
-  // setCurrentTileLayer: (layer: KIND_OF_MAP_TILES) => void;
+  setCurrentTileLayer: (layer: KIND_OF_MAP_TILES) => void;
   layers: KIND_OF_MAP_TILES[];
   // track: UserTracker['track'];
 };
 
 export default function TileLayerButtons({
-  // setCurrentTileLayer,
+  setCurrentTileLayer,
   layers,
   // track,
 }: Props) {
@@ -25,7 +25,7 @@ export default function TileLayerButtons({
             width={60}
             height={60}
             onClick={() => {
-              // setCurrentTileLayer(layer);
+              setCurrentTileLayer(layer);
               // track('tileLayers:tilelayer-button:click');
             }}
             role={layer}

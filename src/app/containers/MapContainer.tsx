@@ -12,13 +12,12 @@ import { useRouter } from 'next/navigation';
 export default function MapContainer() {
   const mapRef = useRef<L.Map | null>(null);
   const tileLayerRef: MutableRefObject<L.TileLayer | null> = useRef(null);
+  const currentTileLayer = useGlobalStore((state) => state.currentTileLayer);
   const currentMap = useGlobalStore((state) => state.currentMap);
   const currentEqPoints = useGlobalStore((state) => state.currentEqPoints);
   const setCurrentMap = useGlobalStore((state) => state.setCurrentMap);
   const setCurrentEqPoints = useGlobalStore((state) => state.setCurrentEqPoints);
   const router = useRouter();
-
-  const currentTileLayer = 'google_satellite';
 
   const mapParams: L.MapOptions = {
     center: [36, 110.5],

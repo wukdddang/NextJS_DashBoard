@@ -3,6 +3,7 @@
 import { CSSProperties } from 'react';
 import * as L from 'leaflet';
 import TileLayerButtonsContainer from '@/app/containers/TileLayerButtonsContainer';
+import { KIND_OF_MAP_TILES, MAP_TILES } from '@/app/constants/MapTiles';
 
 const mapStyles: CSSProperties = {
   overflow: 'hidden',
@@ -11,8 +12,10 @@ const mapStyles: CSSProperties = {
   transition: '0.3s ease',
   top: 0,
   zIndex: 0,
-  height: '800px',
+  height: '600px',
 };
+
+const ALL_MAP_TILES: KIND_OF_MAP_TILES[] = Object.keys(MAP_TILES) as KIND_OF_MAP_TILES[];
 
 type Props = {
   currentMap: L.Map | null;
@@ -32,7 +35,7 @@ export default function Map({ currentMap, onResetMap }: Props) {
       >
         Reset View
       </button>
-      <TileLayerButtonsContainer layers={['google_satellite', 'leaflet_dark', 'leaflet_osm']} />
+      <TileLayerButtonsContainer layers={ALL_MAP_TILES} />
     </div>
   );
 }
