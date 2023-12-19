@@ -2,12 +2,10 @@
 
 import Breadcrumb from '@/app/components/organisms/Breadcrumb';
 import { usePathname, useSearchParams } from 'next/navigation';
-// import dynamic from 'next/dynamic';
-// import Breadcrumb from '@/app/components/organisms/Breadcrumb';
-// import { redirect, usePathname, useSearchParams } from 'next/navigation';
 
 import dynamic from 'next/dynamic';
 import useGlobalStore from '@/app/store/GlobalStore';
+import EarthquakesTable from '@/app/components/organisms/EarthquakeDashboard';
 const MapContainer = dynamic(() => import('@/app/containers/MapContainer'), { ssr: false });
 
 export default function Page() {
@@ -21,12 +19,9 @@ export default function Page() {
     }
   });
 
-  console.log(currentEqPoint);
-
   return (
     <>
       <Breadcrumb pathname={pathname} />
-
       <div className="row">
         <div className="col-lg-6">
           <MapContainer />
@@ -39,7 +34,7 @@ export default function Page() {
                   <div className="table-responsive">
                     {currentEqPoint ? (
                       <>
-                        <div className="tw-flex tw-items-center tw-border-b-[1px]">
+                        <div className="tw-flex tw-w-full tw-items-center tw-pb-4">
                           <h4 className="tw-mr-4 tw-text-[54px] tw-font-light tw-tracking-[-1px]">
                             {currentEqPoint?.mag}
                           </h4>
@@ -58,7 +53,7 @@ export default function Page() {
                           </p>
                         </div>
                         <table className="table mb-0 table-hover align-middle text-nowrap">
-                          <thead>
+                          <thead className="tw-border-t-2">
                             <tr>
                               <th rowSpan={2} colSpan={1} className="border-top-0">
                                 Status
@@ -178,96 +173,7 @@ export default function Page() {
                         </table>
                       </>
                     ) : (
-                      <div className="table-responsive">
-                        <div>
-                          <h4 className="tw-text-[24px] tw-font-bold tw-tracking-[-1px]">
-                            Unconfirmed Earthquakes{' '}
-                          </h4>
-                        </div>
-                        <table className="table mb-0 table-hover align-middle text-nowrap">
-                          <thead>
-                            <tr>
-                              <th rowSpan={2} colSpan={1} className="border-top-0">
-                                Magnitude
-                              </th>
-                              <th rowSpan={2} colSpan={1} className="border-top-0">
-                                Date
-                              </th>
-                              <th rowSpan={2} colSpan={1} className="border-top-0">
-                                Location
-                              </th>
-                              <th rowSpan={2} colSpan={1} className="border-top-0">
-                                Processed
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <div className="d-flex align-items-center">
-                                  <div className="tw-mr-2">
-                                    <a
-                                      href="#"
-                                      className="btn btn-circle d-flex btn-info text-white"
-                                    >
-                                      6.5
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>2024-01-04T01:23:19</td>
-                              <td>Kanyakumari, India</td>
-                              <td>
-                                <div className="d-flex justify-content-between">
-                                  <span className="badge bg-danger">Failed</span>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div className="d-flex align-items-center">
-                                  <div className="tw-mr-2">
-                                    <a
-                                      href="#"
-                                      className="btn btn-circle d-flex btn-orange text-white"
-                                    >
-                                      6.5
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>2024-01-01T11:49:32</td>
-                              <td>Bardufoss, Norway</td>
-                              <td>
-                                <div className="d-flex justify-content-between">
-                                  <span className="badge bg-info">Waiting</span>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div className="d-flex align-items-center">
-                                  <div className="tw-mr-2">
-                                    <a
-                                      href="#"
-                                      className="btn btn-circle d-flex btn-orange text-white"
-                                    >
-                                      6.5
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>2024-01-01T11:49:32</td>
-                              <td>Bardufoss, Norway</td>
-                              <td>
-                                <div className="d-flex justify-content-between">
-                                  <span className="badge bg-info">Waiting</span>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                      <EarthquakesTable tableTitle="Unconfirmed Earthquakes" />
                     )}
                   </div>
                 </div>
@@ -276,87 +182,7 @@ export default function Page() {
             <div className="col-lg-12">
               <div className="card">
                 <div className="card-body">
-                  <div className="table-responsive">
-                    <div>
-                      <h4 className="tw-text-[24px] tw-font-bold tw-tracking-[-1px]">
-                        Histories of Last Earthquakes{' '}
-                      </h4>
-                    </div>
-                    <table className="table mb-0 table-hover align-middle text-nowrap">
-                      <thead>
-                        <tr>
-                          <th rowSpan={2} colSpan={1} className="border-top-0">
-                            Magnitude
-                          </th>
-                          <th rowSpan={2} colSpan={1} className="border-top-0">
-                            Date
-                          </th>
-                          <th rowSpan={2} colSpan={1} className="border-top-0">
-                            Location
-                          </th>
-                          <th rowSpan={2} colSpan={1} className="border-top-0">
-                            Processed
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <div className="tw-mr-2">
-                                <a href="#" className="btn btn-circle d-flex btn-info text-white">
-                                  6.5
-                                </a>
-                              </div>
-                            </div>
-                          </td>
-                          <td>2024-01-04T01:23:19</td>
-                          <td>Kanyakumari, India</td>
-                          <td>
-                            <div className="d-flex justify-content-between">
-                              <span className="badge bg-danger">Failed</span>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <div className="tw-mr-2">
-                                <a href="#" className="btn btn-circle d-flex btn-orange text-white">
-                                  6.5
-                                </a>
-                              </div>
-                            </div>
-                          </td>
-                          <td>2024-01-01T11:49:32</td>
-                          <td>Bardufoss, Norway</td>
-                          <td>
-                            <div className="d-flex justify-content-between">
-                              <span className="badge bg-info">Waiting</span>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <div className="tw-mr-2">
-                                <a href="#" className="btn btn-circle d-flex btn-orange text-white">
-                                  6.5
-                                </a>
-                              </div>
-                            </div>
-                          </td>
-                          <td>2024-01-01T11:49:32</td>
-                          <td>Bardufoss, Norway</td>
-                          <td>
-                            <div className="d-flex justify-content-between">
-                              <span className="badge bg-info">Waiting</span>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                  <EarthquakesTable tableTitle="Histories of Last Earthquakes" />
                 </div>
               </div>
             </div>
@@ -365,18 +191,4 @@ export default function Page() {
       </div>
     </>
   );
-  // return <MapContainer />;
 }
-
-// import Info from '@/app/(dashboard)/@info/page';
-// // import LastInfo from '@/app/(dashboard)/@lastInfo/page';
-// import MainWrapper from '@/app/components/organisms/MainWrapper';
-
-// const MapContainer = dynamic(() => import('@/app/containers/MapContainer'), { ssr: false });
-
-// export default function Page() {
-// const pathName = usePathname();
-// const searchParams = useSearchParams();
-
-//   return < />;
-// }
