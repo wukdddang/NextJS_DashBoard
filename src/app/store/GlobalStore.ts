@@ -37,7 +37,7 @@ const useGlobalStore = create<GlobalState>((set) => ({
   setReadEqPoints: (points) => set(() => ({ readEqPoints: points })),
   currentTileLayer: 'google_satellite',
   setCurrentTileLayer: (currentTileLayer) => set(() => ({ currentTileLayer: currentTileLayer })),
-  processStatus: 'Active',
+  processStatus: 'Failed',
 }));
 
 export default useGlobalStore;

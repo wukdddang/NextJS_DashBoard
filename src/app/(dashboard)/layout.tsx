@@ -9,9 +9,8 @@ export default function Layout(props: {
   return (
     <MainWrapper>
       <div className="page-wrapper">
-        <div className="container-fluid">
-          {props.children}
-          {/* <div className="row">
+        {props.children}
+        {/* <div className="row">
             <div className="col-lg-6">{props.map}</div>
             <div className="col-lg-6">
               <div className="row">
@@ -20,7 +19,6 @@ export default function Layout(props: {
               </div>
             </div>
           </div> */}
-        </div>
       </div>
     </MainWrapper>
   );
