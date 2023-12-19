@@ -1,20 +1,19 @@
 import getPascalCase from '@/app/utils/getPascalCase';
 import Link from 'next/link';
-import CurrentProcessInfo from './CurrentProcessInfo';
-import useGlobalStore from '@/app/store/GlobalStore';
+// import CurrentProcessInfo from './CurrentProcessInfo';
+// import useGlobalStore from '@/app/store/GlobalStore';
 
 export default function Breadcrumb({
-  pathname: pathname,
-  searchParams,
+  pathname,
+  children,
 }: {
   pathname: string;
-  searchParams?: URLSearchParams;
+  children: React.ReactNode;
 }) {
   const pagename = pathname === '/' ? 'Home' : getPascalCase(pathname.replace('/', ''));
-  const processStatus = useGlobalStore((state) => state.processStatus);
 
   return (
-    <div className="page-breadcrumb">
+    <div className="page-breadcrumb tw-border-b-2">
       <div className="row align-items-center">
         <div className="col-6">
           <nav aria-label="breadcrumb">
@@ -32,10 +31,11 @@ export default function Breadcrumb({
           <h1 className="tw-h1 fw-bold tw-mb-0 tw-text-3xl">{pagename}</h1>
         </div>
         <div className="col-6 tw-flex tw-justify-end">
-          <CurrentProcessInfo
+          {/* <CurrentProcessInfo
             processStatus={processStatus}
             startTime={new Date('2023-12-12T05:24:34')}
-          />
+          /> */}
+          {children}
         </div>
       </div>
     </div>

@@ -1,18 +1,18 @@
 'use client';
 
 import React from 'react';
-import Breadcrumb from '@/app/components/organisms/Breadcrumb';
-import { usePathname } from 'next/navigation';
+// import Breadcrumb from '@/app/components/organisms/Breadcrumb';
+// import { usePathname } from 'next/navigation';
 import MainWrapper from '@/app/components/organisms/MainWrapper';
 
 export default function HistoryPage() {
-  const pathName = usePathname();
+  // const pathName = usePathname();
 
   return (
     <>
       <MainWrapper>
         <div className="page-wrapper">
-          <Breadcrumb pathname={pathName} />
+          {/* <Breadcrumb pathname={pathName} /> */}
           <div className="container-fluid">
             <div className="row">
               <div className="col-12">

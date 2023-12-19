@@ -13,7 +13,9 @@ import './global.css';
 import { Lexend } from 'next/font/google';
 import React from 'react';
 import SideBarContainer from '@/app/containers/SideBarContainer';
-import Header from '@/app/components/organisms/Header';
+// import Header from '@/app/components/organisms/Header';
+// import CurrentProcessInfo from './components/organisms/CurrentProcessInfo';
+import BreadcrumbContainer from './containers/BreadcrumbContainer';
 // import useGlobalStore from '@/app/store/GlobalStore';
 
 const lexend = Lexend({
@@ -35,7 +37,8 @@ export default function RootLayout(props: Props) {
   return (
     <html lang="ko">
       <body className={`${lexend.variable} no-scrollbar tw-font-sans tw-antialiased`}>
-        <Header />
+        {/* <Header /> */}
+        <BreadcrumbContainer />
         <SideBarContainer />
         {props.children}
         {/* <BootstrapClient /> */}
