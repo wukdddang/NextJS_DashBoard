@@ -1,8 +1,9 @@
 type Props = {
   tableTitle: string;
+  isHistoryPage?: boolean;
 };
 
-export default function EarthquakeDashboard({ tableTitle }: Props) {
+export default function EarthquakesTable({ tableTitle, isHistoryPage = false }: Props) {
   return (
     <div className="table-responsive">
       <div>
