@@ -1,22 +1,15 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../public/dist/css/style.min.css';
-// import '../../public/assets/libs/chartist/dist/chartist.min.css';
-// import '../../public/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import 'leaflet/dist/leaflet.css';
-// import BootstrapClient from '@/app/components/BootStrapClient';
 import './global.css';
-// import Script from 'next/script';
 
 import { Lexend } from 'next/font/google';
 import React from 'react';
 import SideBarContainer from '@/app/containers/SideBarContainer';
-// import Header from '@/app/components/organisms/Header';
-// import CurrentProcessInfo from './components/organisms/CurrentProcessInfo';
 import BreadcrumbContainer from './containers/BreadcrumbContainer';
-// import useGlobalStore from '@/app/store/GlobalStore';
+import Script from 'next/script';
 
 const lexend = Lexend({
   subsets: ['latin-ext'],
@@ -38,13 +31,15 @@ export default function RootLayout(props: Props) {
     <html lang="ko">
       <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
       <body className={`${lexend.variable} no-scrollbar tw-font-sans tw-antialiased`}>
-        {/* <Header /> */}
         <BreadcrumbContainer />
         <SideBarContainer />
         {props.children}
-        {/* <BootstrapClient /> */}
-        {/* <Script src="/assets/libs/jquery/dist/jquery.min.js" /> */}
         <ToastContainer />
+        <Script src="https://code.jquery.com/jquery-3.7.0.js" />
+        <Script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js" />
+        <Script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js" />
+        <Script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js" />
+        <Script src="/table/js/script.js" />
       </body>
     </html>
   );

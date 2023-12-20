@@ -13,7 +13,7 @@ export default function Breadcrumb({
   const pagename = pathname === '/' ? 'Home' : getPascalCase(pathname.replace('/', ''));
 
   return (
-    <div className="page-breadcrumb tw-border tw-py-6">
+    <div className="page-breadcrumb tw-py-6">
       <div className="row align-items-center">
         <div className="col-6">
           <nav aria-label="breadcrumb">
@@ -30,13 +30,7 @@ export default function Breadcrumb({
           </nav>
           <h1 className="tw-h1 fw-bold tw-mb-0 tw-text-3xl">{pagename}</h1>
         </div>
-        <div className="col-6 tw-flex tw-justify-end">
-          {/* <CurrentProcessInfo
-            processStatus={processStatus}
-            startTime={new Date('2023-12-12T05:24:34')}
-          /> */}
-          {children}
-        </div>
+        <div className="col-6 tw-flex tw-justify-end">{children}</div>
       </div>
     </div>
   );
