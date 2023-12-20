@@ -50,25 +50,33 @@ export default function RippleRing({
           </div>
         </div>
       </div>
-        <div class="tw-flex tw-flex-col tw-gap-2">
-          <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
-            <span class="btn btn-success btn-circle d-flex align-items-center">
-              <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
-            </span>
-            <span class="tw-font-sans">Pre-Earthquake Image Downloaded </span>
-          </div>
-          <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
-            <span class="btn btn-success btn-circle d-flex align-items-center">
-              <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
-            </span>
-            <span class="tw-font-sans">Post-Earthquake Image Downloaded</span>
-          </div>
+      <div class="tw-flex tw-flex-col tw-gap-2 tw-mb-4">
+        <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
+          <span class="btn btn-success btn-circle d-flex align-items-center">
+            <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
+          </span>
+          <span class="tw-font-sans">Pre-Earthquake Image Downloaded </span>
         </div>
+        <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
+          <span class="btn btn-success btn-circle d-flex align-items-center">
+            <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
+          </span>
+          <span class="tw-font-sans">Post-Earthquake Image Downloaded</span>
+        </div>
+      </div>
 
-      <button id="popup-view-detail-button" class="btn btn-primary tw-ml-auto tw-flex tw-justify-center tw-items-center">
-        <i class="mdi mdi-magnify tw-w-[20px] tw-h-[20px]"></i>
-        <span class="tw-text-center">view in detail</span>
-      </button>
+      <div class="tw-flex">
+        <button class="btn btn-primary tw-ml-auto tw-flex tw-justify-center tw-items-center">
+          <i class="mdi mdi-reload tw-w-[20px] tw-h-[20px]"></i> 
+          <span>Reset View</span>
+        </button>
+        <button id="popup-view-detail-button" class="btn btn-primary tw-ml-auto tw-flex tw-justify-center tw-items-center">
+          <i class="mdi mdi-magnify tw-w-[20px] tw-h-[20px]"></i>
+          <span class="tw-text-center">view in detail</span>
+        </button>
+      </div>
+      
+      
     `
   );
 
@@ -79,8 +87,6 @@ export default function RippleRing({
         router.replace(`/?location=${location}&createdAt=${createdAt}&lat=${lat}&lng=${lng}`, {
           scroll: false,
         });
-        // window.location.href = `/detail/?createdAt=${createdAt}&lat=${lat}&lng=${lng}`;
-        // router.push(`/detail`);
       });
     }
   });
