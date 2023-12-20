@@ -2,9 +2,9 @@ import MainWrapper from '@/app/components/organisms/MainWrapper';
 
 export default function Layout(props: {
   children: React.ReactNode;
-  map: React.ReactNode;
-  info: React.ReactNode;
-  lastInfo: React.ReactNode; // 추가된 lastInfo prop 타입
+  // map: React.ReactNode;
+  // info: React.ReactNode;
+  // lastInfo: React.ReactNode; // 추가된 lastInfo prop 타입
 }) {
   return (
     <MainWrapper>
