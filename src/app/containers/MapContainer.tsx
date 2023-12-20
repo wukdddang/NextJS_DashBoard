@@ -9,6 +9,9 @@ import useGlobalStore from '@/app/store/GlobalStore';
 import generateRippleRing from '@/app/utils/generateRippleRing';
 import { useRouter } from 'next/navigation';
 
+export const MAP_CENTER: L.LatLngExpression = [36, 105.5];
+export const MAP_ZOOM = 3;
+
 export default function MapContainer() {
   const mapRef = useRef<L.Map | null>(null);
   const tileLayerRef: MutableRefObject<L.TileLayer | null> = useRef(null);
@@ -20,22 +23,14 @@ export default function MapContainer() {
   const router = useRouter();
 
   const mapParams: L.MapOptions = {
-    center: [36, 110.5],
-    zoom: 2,
+    center: MAP_CENTER,
+    zoom: MAP_ZOOM,
     zoomControl: false,
     maxBounds: L.latLngBounds(
       L.latLng(-90, -180), // 남서쪽 경계
       L.latLng(90, 180) // 북동쪽 경계
     ),
     maxBoundsViscosity: 0.9, // 경계를 벗어날 때의 "탄성" 설정 (0에서 1 사이의 값)
-  };
-
-  const resetMap = () => {
-    if (isCurrentMapExist(mapRef.current)) {
-      mapRef.current.closePopup();
-      mapRef.current.setView([36, 110.5], 2);
-      // 필요한 경우 여기에 추가적인 초기화 로직을 구현합니다.
-    }
   };
 
   useEffect(() => {
@@ -78,7 +73,7 @@ export default function MapContainer() {
           lng: point.lng,
           createdAt: point.createdAt,
           isRead: point.isRead,
-          imageStatus: point.imageStatus,
+          innerProcessStatus: point.innerProcessStatus,
           router,
         });
       });
@@ -97,7 +92,7 @@ export default function MapContainer() {
         lng: 127.3845,
         createdAt: '2023-12-04T05:24:34',
         isRead: false,
-        imageStatus: 'Collecting1',
+        innerProcessStatus: 'Collecting1',
       },
       {
         mag: '6.5',
@@ -106,7 +101,7 @@ export default function MapContainer() {
         lng: 18.5151,
         createdAt: '2024-01-01T11:49:32',
         isRead: false,
-        imageStatus: 'Collecting',
+        innerProcessStatus: 'Collecting',
       },
       {
         mag: '6.5',
@@ -115,10 +110,10 @@ export default function MapContainer() {
         lng: 77.5385,
         createdAt: '2024-01-04T01:23:19',
         isRead: false,
-        imageStatus: 'Waiting',
+        innerProcessStatus: 'Waiting',
       },
     ]);
   }, []);
 
-  return <Map currentMap={mapRef.current} onResetMap={resetMap} />;
+  return <Map currentMap={mapRef.current} />;
 }

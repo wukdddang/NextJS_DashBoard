@@ -19,22 +19,19 @@ const ALL_MAP_TILES: KIND_OF_MAP_TILES[] = Object.keys(MAP_TILES) as KIND_OF_MAP
 
 type Props = {
   currentMap: L.Map | null;
-  onResetMap: () => void;
+  // onResetMap: () => void;
   // isSideBarOpened: boolean;
   // isROIEnabled: boolean;
   // setROIEnable: (currentROI: boolean) => void;
 };
 
-export default function Map({ currentMap, onResetMap }: Props) {
+export default function Map({ currentMap }: Props) {
   return (
     <div className="position-relative">
       <div id="map" style={{ ...mapStyles }} />
-      <button
-        className="btn btn-primary tw-absolute tw-bottom-[5%] tw-left-[3%] tw-text-white"
-        onClick={onResetMap}
-      >
+      {/* <button className="btn btn-primary tw-absolute tw-bottom-[5%] tw-left-[3%] tw-text-white">
         Reset View
-      </button>
+      </button> */}
       <TileLayerButtonsContainer layers={ALL_MAP_TILES} />
     </div>
   );

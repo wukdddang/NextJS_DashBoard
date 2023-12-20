@@ -2,6 +2,7 @@ import { EqPointsType } from '@/app/store/GlobalStore';
 import * as L from 'leaflet';
 import { isCurrentMapExist } from '@/app/types/TypePredicate';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { MAP_CENTER, MAP_ZOOM } from '../containers/MapContainer';
 
 const customIcon = L.divIcon({
   className: 'custom-icon',
@@ -66,7 +67,7 @@ export default function RippleRing({
       </div>
 
       <div class="tw-flex">
-        <button class="btn btn-primary tw-ml-auto tw-flex tw-justify-center tw-items-center">
+        <button id="popup-reset-button" class="btn btn-primary tw-ml-auto tw-flex tw-justify-center tw-items-center">
           <i class="mdi mdi-reload tw-w-[20px] tw-h-[20px]"></i> 
           <span>Reset View</span>
         </button>
@@ -82,11 +83,18 @@ export default function RippleRing({
 
   marker.on('popupopen', () => {
     const detailButton = document.querySelector('#popup-view-detail-button');
+    const resetButton = document.querySelector('#popup-reset-button');
     if (detailButton) {
       detailButton.addEventListener('click', () => {
         router.replace(`/?location=${location}&createdAt=${createdAt}&lat=${lat}&lng=${lng}`, {
           scroll: false,
         });
+      });
+    }
+    if (resetButton) {
+      resetButton.addEventListener('click', () => {
+        currentMap.closePopup();
+        currentMap.setView(MAP_CENTER, MAP_ZOOM);
       });
     }
   });
