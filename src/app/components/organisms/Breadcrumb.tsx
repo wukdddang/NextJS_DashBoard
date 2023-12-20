@@ -13,7 +13,7 @@ export default function Breadcrumb({
   const pagename = pathname === '/' ? 'Home' : getPascalCase(pathname.replace('/', ''));
 
   return (
-    <div className="page-breadcrumb tw-border-b-2">
+    <div className="page-breadcrumb tw-border tw-py-6">
       <div className="row align-items-center">
         <div className="col-6">
           <nav aria-label="breadcrumb">
