@@ -10,7 +10,7 @@ export type EqPointsType = {
   lng: number;
   createdAt: string;
   isRead: boolean;
-  imageStatus: 'Collecting' | 'Stopped' | 'Collecting1' | 'Paused' | 'Waiting';
+  innerProcessStatus: 'Collecting' | 'Stopped' | 'Collecting1' | 'Paused' | 'Waiting';
 };
 
 interface ProcessState {
