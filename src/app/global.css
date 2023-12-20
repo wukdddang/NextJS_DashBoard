@@ -149,3 +149,9 @@
 .custom-popup {
   font-family: 'Lexend', sans-serif;
 }
+
+a[aria-disabled='true'] {
+  /* text-decoration-line: underline; */
+  background-color: #ccc;
+  opacity: 0.5;
+}

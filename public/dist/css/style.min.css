@@ -208,9 +208,9 @@ a {
   color: #1e4db7;
   text-decoration: underline;
 }
-a:hover {
+/* a:hover {
   color: #183e92;
-}
+} */
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
   color: inherit;
@@ -9380,20 +9380,20 @@ html {
   position: relative;
   min-height: 100%;
 }
-a {
+/* a {
   color: #1a9bfc;
-}
-a:focus,
+} */
+/* a:focus,
 a:hover {
   text-decoration: none;
-}
-a.link {
+} */
+/* a.link {
   color: #67757c;
-}
-a.link:focus,
-a.link:hover {
+} */
+/* a.link:focus, */
+/* a.link:hover {
   color: #1a9bfc;
-}
+} */
 .box {
   border-radius: 2px;
   padding: 10px;
@@ -9566,9 +9566,9 @@ ul.list-style-none li a {
   display: block;
   text-decoration: none;
 }
-ul.list-style-none li a:hover {
+/* ul.list-style-none li a:hover {
   color: #1a9bfc;
-}
+} */
 .card {
   margin-bottom: 20px;
 }
