@@ -9,7 +9,7 @@ import { Lexend } from 'next/font/google';
 import React from 'react';
 import SideBarContainer from '@/app/containers/SideBarContainer';
 import BreadcrumbContainer from './containers/BreadcrumbContainer';
-import Script from 'next/script';
+// import Script from 'next/script';
 import Head from 'next/head';
 
 const lexend = Lexend({
