@@ -8,11 +8,11 @@ import { KIND_OF_MAP_TILES, MAP_TILES } from '@/app/constants/MapTiles';
 const mapStyles: CSSProperties = {
   overflow: 'hidden',
   width: '100%',
+  height: '100vh',
   borderRadius: '20px',
   transition: '0.3s ease',
   top: 0,
   zIndex: 0,
-  height: '600px',
 };
 
 const ALL_MAP_TILES: KIND_OF_MAP_TILES[] = Object.keys(MAP_TILES) as KIND_OF_MAP_TILES[];
