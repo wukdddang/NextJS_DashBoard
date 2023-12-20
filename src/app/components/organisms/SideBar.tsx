@@ -27,9 +27,8 @@ export default function SideBar({
         <div className="tw-mx-auto tw-flex tw-py-6">
           <Image src={Logo} alt="logo" width={200} height={200} />
         </div>
-        <div className="tw-text-center tw-text-[12px]">
-          SAR Image and Data Processor
-          <br /> Dashboard
+        <div className="tw-text-center tw-text-[20px]">
+          <span>SARDIP Dashboard</span>
         </div>
       </div>
       <div className="no-scrollbar tw-z-1 tw-left-0 tw-flex tw-w-[260px] tw-flex-grow tw-flex-col tw-justify-between tw-overflow-y-scroll">
