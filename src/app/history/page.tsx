@@ -28,6 +28,7 @@ import {
 import { RankingInfo, rankItem, compareItems } from '@tanstack/match-sorter-utils';
 
 import { Person, makeData } from './makeData';
+import HistoryTable from './HistoryTable';
 // import { CoreOptions } from '@tanstack/react-table';
 
 declare module '@tanstack/table-core' {
@@ -153,6 +154,7 @@ function DebouncedInput({
     }, debounce);
 
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return <input {...props} value={value} onChange={(e) => setValue(e.target.value)} />;
@@ -275,7 +277,7 @@ export default function HistoryPage() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
-              {/* <HistoryTable /> */}
+              <HistoryTable />
               {/* <table id="example" className="table table-striped" style={{ width: '100%' }}>
                 <thead>
                   <tr>
@@ -756,7 +758,7 @@ export default function HistoryPage() {
                   </tr>
                 </tfoot>
               </table> */}
-              <div className="p-2">
+              {/* <div className="p-2">
                 <div>
                   <DebouncedInput
                     value={globalFilter ?? ''}
@@ -883,14 +885,14 @@ export default function HistoryPage() {
                   </select>
                 </div>
                 <div>{table.getPrePaginationRowModel().rows.length} Rows</div>
-                {/* <div>
+                <div>
                   <button onClick={() => rerender()}>Force Rerender</button>
                 </div>
                 <div>
                   <button onClick={() => refreshData()}>Refresh Data</button>
-                </div> */}
-                {/* <pre>{JSON.stringify(table.getState(), null, 2)}</pre> */}
-              </div>
+                </div>
+                <pre>{JSON.stringify(table.getState(), null, 2)}</pre>
+              </div> */}
               {/* <div className="p-2">
                 <table className="table table-striped">
                   <thead>
