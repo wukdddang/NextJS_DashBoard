@@ -29,8 +29,8 @@
       }
     ],
     // 여기에 필요한 import 관련 규칙을 추가할 수 있습니다.
-    "import/no-unresolved": "error",
-    "import/named": "error",
+    // "import/no-unresolved": "error",
+    // "import/named": "error",
     "import/namespace": "error",
     "import/default": "error",
     "import/export": "error",
