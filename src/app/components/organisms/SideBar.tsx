@@ -22,7 +22,7 @@ export default function SideBar({
   email: string;
 }) {
   return (
-    <nav className="h-100 position-fixed no-scrollbar tw-z-1 tw-left-0 tw-top-0 tw-flex tw-w-[260px] tw-flex-col tw-overflow-y-scroll tw-border tw-pb-4">
+    <nav className="h-100 position-fixed no-scrollbar tw-z-1 tw-left-0 tw-top-0 tw-flex tw-w-[260px] tw-flex-col tw-overflow-y-scroll tw-border">
       <div className="tw-flex tw-flex-col tw-justify-center tw-border-b-2 tw-pb-2">
         <div className="tw-mx-auto tw-flex tw-py-6">
           <Image src={Logo} alt="logo" width={200} height={200} />
@@ -37,7 +37,7 @@ export default function SideBar({
             const LinkIcon = sideBarItem.icon;
 
             const linkClasses = clsx(
-              `tw-flex tw-h-[48px] tw-grow tw-items-center tw-justify-start tw-gap-2 tw-rounded-md tw-p-3 tw-text-sm tw-font-medium tw-transition tw-duration-300`,
+              `tw-flex tw-h-[50px] tw-grow tw-items-center tw-justify-start tw-gap-2 tw-rounded-md tw-p-3 tw-text-sm tw-font-medium tw-transition tw-duration-300 tw-my-1`,
               {
                 'hover:tw-bg-PRIMARY hover:tw-text-white': !sideBarItem.isDisabled, // disabled가 아닐 때만 hover 스타일 적용
                 'tw-bg-PRIMARY tw-text-white':
@@ -70,8 +70,8 @@ export default function SideBar({
             src="/assets/images/users/profile.png"
             alt="user"
             className="rounded-circle"
-            width={31}
-            height={31}
+            width={40}
+            height={40}
           />
           <div className="tw-flex tw-flex-col tw-gap-0 tw-text-[12px]">
             <span className="tw-h-4 tw-w-4">{username}</span>
