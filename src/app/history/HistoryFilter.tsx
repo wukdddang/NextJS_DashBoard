@@ -1,13 +1,15 @@
 import { useMemo } from 'react';
 import DebouncedInput from './DebouncedInput';
-import { Column, Table } from '@tanstack/table-core';
+import * as tanstackTable from '@tanstack/table-core';
+
+// import { Column, Table } from '@tanstack/table-core';
 
 export default function HistoryFilter({
   column,
   table,
 }: {
-  column: Column<any, unknown>;
-  table: Table<any>;
+  column: tanstackTable.Column<any, unknown>;
+  table: tanstackTable.Table<any>;
 }) {
   const firstValue = table.getPreFilteredRowModel().flatRows[0]?.getValue(column.id);
 

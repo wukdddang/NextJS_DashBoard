@@ -2,6 +2,9 @@
 
 import React, { useEffect } from 'react';
 import MainWrapper from '@/app/components/organisms/MainWrapper';
+
+// import * as TanstackTable from '@tanstack/react-table';
+
 import {
   Column,
   Table,
@@ -25,6 +28,7 @@ import {
 import { RankingInfo, rankItem, compareItems } from '@tanstack/match-sorter-utils';
 
 import { Person, makeData } from './makeData';
+import { CoreOptions } from '@tanstack/react-table';
 
 declare module '@tanstack/table-core' {
   interface FilterFns {
@@ -226,6 +230,11 @@ export default function HistoryPage() {
 
   const [data, setData] = React.useState<Person[]>(() => makeData(50000));
   // const refreshData = () => setData((old) => makeData(50000));
+
+  const coreOptions: CoreOptions<> = {
+    columns: [],
+    data: [],
+  };
 
   const table = useReactTable({
     data,
