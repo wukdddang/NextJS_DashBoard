@@ -2,23 +2,25 @@
 
 import clsx from 'clsx';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import Logo from '../../../../public/assets/images/users/1-old.jpg';
+// import { usePathname } from 'next/navigation';
+import Logo from '../../../../public/assets/images/logo.png';
 import Image from 'next/image';
 
 export default function SideBar({
   sideBarItems,
+  pathname,
+  username,
+  email,
 }: {
   sideBarItems: {
     name: string;
     href: string;
     icon: any;
   }[];
+  pathname: string;
+  username: string;
+  email: string;
 }) {
-  const pathname = usePathname();
-  const username = 'admin';
-  const email = 'admin@admin.com';
-
   return (
     <nav
       className="bg-white h-100 position-fixed no-scrollbar tw-z-1 tw-left-0 tw-top-0 tw-flex tw-w-[260px] tw-flex-col tw-overflow-y-scroll tw-border tw-pb-4"
@@ -26,9 +28,8 @@ export default function SideBar({
         transition: '0.3s ease',
       }}
     >
-      <div className="tw-flex">
-        <Image src={Logo} alt="logo" width={100} height={100} />
-        <span>Lumir</span>
+      <div className="tw-mx-auto tw-flex tw-py-6">
+        <Image src={Logo} alt="logo" width={200} height={200} />
       </div>
       <div className="bg-white no-scrollbar tw-z-1 tw-left-0 tw-flex tw-w-[260px] tw-flex-grow tw-flex-col tw-justify-between tw-overflow-y-scroll">
         <div>
