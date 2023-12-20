@@ -10,6 +10,7 @@ import React from 'react';
 import SideBarContainer from '@/app/containers/SideBarContainer';
 import BreadcrumbContainer from './containers/BreadcrumbContainer';
 import Script from 'next/script';
+import Head from 'next/head';
 
 const lexend = Lexend({
   subsets: ['latin-ext'],
@@ -29,17 +30,29 @@ type Props = {
 export default function RootLayout(props: Props) {
   return (
     <html lang="ko">
-      <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
+      <Head>
+        <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
+        {/* Data Table CSS */}
+        {/* <link
+          rel="stylesheet"
+          href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css"
+        /> */}
+        {/* Font Awesome CSS */}
+        {/* <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
+        /> */}
+      </Head>
       <body className={`${lexend.variable} no-scrollbar tw-font-sans tw-antialiased`}>
         <BreadcrumbContainer />
         <SideBarContainer />
         {props.children}
         <ToastContainer />
-        <Script src="https://code.jquery.com/jquery-3.7.0.js" />
+        {/* <Script src="https://code.jquery.com/jquery-3.7.0.js" />
         <Script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js" />
         <Script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js" />
         <Script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js" />
-        <Script src="/table/js/script.js" />
+        <Script src="/table/js/script.js" /> */}
       </body>
     </html>
   );
