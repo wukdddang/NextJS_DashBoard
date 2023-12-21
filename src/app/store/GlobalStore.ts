@@ -1,16 +1,18 @@
 import * as L from 'leaflet';
 import { create } from 'zustand';
-import { KIND_OF_MAP_TILES } from '@/app/constants/MapTiles';
+import { KIND_OF_MAP_TILES } from '@/app/common/constants/MapTiles';
 import { processStatusObj } from '@/app/components/organisms/CurrentProcessInfo';
+import { UsgsStatusEnum } from '@/app/enum/usgs.status.enum';
 
 export type EqPointsType = {
+  id: string;
   mag: string;
   location: string;
   lat: number;
   lng: number;
   createdAt: string;
   isRead: boolean;
-  innerProcessStatus: 'Collecting' | 'Stopped' | 'Collecting1' | 'Paused' | 'Waiting';
+  status: UsgsStatusEnum;
 };
 
 interface ProcessState {
@@ -26,6 +28,8 @@ interface GlobalState extends ProcessState {
   setReadEqPoints: (points: (EqPointsType & { is_read: boolean })[]) => void;
   currentTileLayer: KIND_OF_MAP_TILES;
   setCurrentTileLayer: (currentTileLayer: KIND_OF_MAP_TILES) => void;
+  historyTableData: any[];
+  setHistoryTableData: (historyTableData: any[]) => void;
 }
 
 const useGlobalStore = create<GlobalState>((set) => ({
@@ -38,6 +42,8 @@ const useGlobalStore = create<GlobalState>((set) => ({
   currentTileLayer: 'google_satellite',
   setCurrentTileLayer: (currentTileLayer) => set(() => ({ currentTileLayer: currentTileLayer })),
   processStatus: 'Active',
+  historyTableData: [],
+  setHistoryTableData: (historyTableData) => set(() => ({ historyTableData })),
 }));
 
 export default useGlobalStore;
