@@ -10,7 +10,6 @@ import React from 'react';
 import SideBarContainer from '@/app/containers/SideBarContainer';
 import BreadcrumbContainer from './containers/BreadcrumbContainer';
 // import Script from 'next/script';
-import Head from 'next/head';
 
 const lexend = Lexend({
   subsets: ['latin-ext'],
@@ -30,19 +29,17 @@ type Props = {
 export default function RootLayout(props: Props) {
   return (
     <html lang="ko">
-      <Head>
-        <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
-        {/* Data Table CSS */}
-        {/* <link
+      <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
+      {/* Data Table CSS */}
+      {/* <link
           rel="stylesheet"
           href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css"
         /> */}
-        {/* Font Awesome CSS */}
-        {/* <link
+      {/* Font Awesome CSS */}
+      {/* <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
         /> */}
-      </Head>
       <body className={`${lexend.variable} no-scrollbar tw-font-sans tw-antialiased`}>
         <BreadcrumbContainer />
         <SideBarContainer />
