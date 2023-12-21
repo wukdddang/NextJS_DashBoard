@@ -1,5 +1,5 @@
 import TileLayerButtons from '@/app/components/organisms/TileLayerButtons';
-import { KIND_OF_MAP_TILES } from '@/app/constants/MapTiles';
+import { KIND_OF_MAP_TILES } from '@/app/common/constants/MapTiles';
 import useGlobalStore from '@/app/store/GlobalStore';
 
 type Props = {

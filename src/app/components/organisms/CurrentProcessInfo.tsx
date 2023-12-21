@@ -3,7 +3,7 @@
 import getElapsedTime from '@/app/utils/getProcessingTime';
 import { useEffect, useState } from 'react';
 import StatusIcons from '@/app/utils/StatusIcons';
-import { currentProcessInfoText } from '@/app/constants/CurrentProcessInfoText';
+import { currentProcessInfoText } from '@/app/common/constants/CurrentProcessInfoText';
 
 export const processStatusObj = {
   // Delayed: 'WARN',

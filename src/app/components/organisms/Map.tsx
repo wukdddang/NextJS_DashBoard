@@ -3,7 +3,7 @@
 import { CSSProperties } from 'react';
 import * as L from 'leaflet';
 import TileLayerButtonsContainer from '@/app/containers/TileLayerButtonsContainer';
-import { KIND_OF_MAP_TILES, MAP_TILES } from '@/app/constants/MapTiles';
+import { KIND_OF_MAP_TILES, MAP_TILES } from '@/app/common/constants/MapTiles';
 
 const mapStyles: CSSProperties = {
   overflow: 'hidden',

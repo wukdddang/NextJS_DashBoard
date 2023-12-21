@@ -1,4 +1,4 @@
-import { KIND_OF_MAP_TILES } from '@/app/constants/MapTiles';
+import { KIND_OF_MAP_TILES } from '@/app/common/constants/MapTiles';
 import Image from 'next/image';
 // import { UserTracker } from '@/domain/model/UserTracker';
 
