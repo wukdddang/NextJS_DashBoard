@@ -2,7 +2,7 @@ import { EqPointsType } from '@/app/store/GlobalStore';
 import * as L from 'leaflet';
 import { isCurrentMapExist } from '@/app/types/TypePredicate';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { MAP_CENTER, MAP_FLY_TO_SPEED, MAP_ZOOM } from '../containers/MapContainer';
+import { MAP_CENTER, MAP_FLY_TO_SPEED, MAP_ZOOM } from '@/app/containers/MapContainer';
 import { MutableRefObject } from 'react';
 import axios from 'axios';
 import { SERVER_HOST } from '@/app/common/constants/environment.const';

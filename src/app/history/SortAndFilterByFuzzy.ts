@@ -1,10 +1,18 @@
-import { compareItems, rankItem } from '@tanstack/match-sorter-utils';
+import { RankingInfo, compareItems, rankItem } from '@tanstack/match-sorter-utils';
 import { FilterFn, SortingFn, sortingFns } from '@tanstack/table-core';
+
+declare module '@tanstack/table-core' {
+  interface FilterFns {
+    fuzzy: FilterFn<unknown>;
+  }
+  interface FilterMeta {
+    itemRank: RankingInfo;
+  }
+}
 
 export const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   // Rank the item
   const itemRank = rankItem(row.getValue(columnId), value);
-
   // Store the itemRank info
   addMeta({
     itemRank,
