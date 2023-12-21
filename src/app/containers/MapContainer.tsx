@@ -3,7 +3,7 @@
 import * as L from 'leaflet';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import Map from '@/app/components/organisms/Map';
-import { MAP_TILES } from '@/app/constants/MapTiles';
+import { MAP_TILES } from '@/app/common/constants/MapTiles';
 import { isCurrentMapExist, isTileLayerExist } from '@/app/types/TypePredicate';
 import useGlobalStore from '@/app/store/GlobalStore';
 import generateRippleRing from '@/app/utils/generateRippleRing';
@@ -11,6 +11,11 @@ import { useRouter } from 'next/navigation';
 
 export const MAP_CENTER: L.LatLngExpression = [36, 105.5];
 export const MAP_ZOOM = 3;
+export const MAP_FLY_TO_SPEED = {
+  duration: 1,
+  // easeLinearity: 0.1,
+  animate: true,
+};
 
 export default function MapContainer() {
   const mapRef = useRef<L.Map | null>(null);
@@ -20,6 +25,7 @@ export default function MapContainer() {
   const currentEqPoints = useGlobalStore((state) => state.currentEqPoints);
   const setCurrentMap = useGlobalStore((state) => state.setCurrentMap);
   const setCurrentEqPoints = useGlobalStore((state) => state.setCurrentEqPoints);
+  const markersRef = useRef<{ [key: string]: L.Marker }>({});
   const router = useRouter();
 
   const mapParams: L.MapOptions = {
@@ -66,14 +72,16 @@ export default function MapContainer() {
 
       currentEqPoints.map((point) => {
         return generateRippleRing({
+          id: point.id,
           currentMap,
+          markersRef,
           mag: point.mag,
           location: point.location,
           lat: point.lat,
           lng: point.lng,
           createdAt: point.createdAt,
           isRead: point.isRead,
-          innerProcessStatus: point.innerProcessStatus,
+          status: point.status,
           router,
         });
       });
@@ -82,37 +90,6 @@ export default function MapContainer() {
 
   useEffect(() => {
     setCurrentMap(mapRef.current);
-
-    // 데이터 추가 로직
-    setCurrentEqPoints([
-      {
-        mag: '6.6',
-        location: 'Daejeon, Korea',
-        lat: 36.3504,
-        lng: 127.3845,
-        createdAt: '2023-12-04T05:24:34',
-        isRead: false,
-        innerProcessStatus: 'Collecting1',
-      },
-      {
-        mag: '6.5',
-        location: 'Bardufoss, Norway',
-        lat: 69.0648,
-        lng: 18.5151,
-        createdAt: '2024-01-01T11:49:32',
-        isRead: false,
-        innerProcessStatus: 'Collecting',
-      },
-      {
-        mag: '6.5',
-        location: 'Kanyakumari, India',
-        lat: 8.0883,
-        lng: 77.5385,
-        createdAt: '2024-01-04T01:23:19',
-        isRead: false,
-        innerProcessStatus: 'Waiting',
-      },
-    ]);
   }, []);
 
   return <Map currentMap={mapRef.current} />;
