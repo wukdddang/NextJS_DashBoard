@@ -9,6 +9,7 @@ import { Lexend } from 'next/font/google';
 import React from 'react';
 import SideBarContainer from '@/app/containers/SideBarContainer';
 import BreadcrumbContainer from './containers/BreadcrumbContainer';
+import { MSWComponent } from './components/settings/MSWComponent';
 // import Script from 'next/script';
 
 const lexend = Lexend({
@@ -41,6 +42,7 @@ export default function RootLayout(props: Props) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
         /> */}
       <body className={`${lexend.variable} no-scrollbar tw-font-sans tw-antialiased`}>
+        <MSWComponent />
         <BreadcrumbContainer />
         <SideBarContainer />
         {props.children}

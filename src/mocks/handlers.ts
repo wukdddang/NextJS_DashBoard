@@ -1,7 +1,9 @@
-import { http } from 'msw';
+import { HttpResponse, http } from 'msw';
+import { SERVER_HOST } from '@/app/common/constants/environment.const';
 
 export const handlers = [
-  http.get('http://192.168.10.178:3333/api/usgs/list?take=3000', () => {
-    console.log('good');
+  http.get(`${SERVER_HOST}/usgs/list`, () => {
+    // console.log('good');
+    return HttpResponse.json('good');
   }),
 ];
