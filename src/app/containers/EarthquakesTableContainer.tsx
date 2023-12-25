@@ -31,7 +31,7 @@ export default function EarthquakesTableContainer({ data = [], tableTitle, isHis
     { accessorKey: 'mag', header: () => 'Magnitude' },
     { accessorKey: 'date', header: () => 'Date' },
     { accessorKey: 'location', header: () => 'Location' },
-    { accessorKey: 'status', header: () => 'Earthquake Downloading Status' },
+    { accessorKey: 'status', header: () => 'Status' },
   ];
 
   const columns = useMemo<ColumnDef<EarthquakesTableType, any>[]>(

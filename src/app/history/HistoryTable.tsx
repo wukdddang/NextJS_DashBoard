@@ -4,6 +4,9 @@ import { EqPointsType } from '../store/GlobalStore';
 import HistoryFilter from './HistoryFilter';
 import DebouncedInput from './DebouncedInput';
 import PaginationNumber from '../containers/PaginationNumber';
+import { getTableCellStyles } from '../utils/getTableCellStyles';
+import { MdDownload } from 'react-icons/md';
+
 
 type Earthquake = {
   date: string;
@@ -29,7 +32,7 @@ export default function HistoryTable({
   table,
   globalFilter,
   setGlobalFilter,
-  data,
+  // data,
   pageIndex,
   pageSize,
 }: Props) {
@@ -93,7 +96,7 @@ export default function HistoryTable({
                               <div
                                 {...{
                                   className: header.column.getCanSort()
-                                    ? 'cursor-pointer select-none'
+                                    ? 'tw-cursor-pointer tw-select-none tw-font-bold'
                                     : '',
                                   onClick: header.column.getToggleSortingHandler(),
                                 }}
@@ -122,18 +125,13 @@ export default function HistoryTable({
                   return (
                     <tr key={row.id}>
                       {row.getVisibleCells().map((cell) => {
-                        let cellStyle = {};
 
-                        // TODO: 리팩토링할 때 타입 단언 수정하기
-                        if (
-                          cell.column.id === 'mag' &&
-                          parseFloat(cell.getValue() as string) >= 5.0
-                        ) {
-                          cellStyle = { fontWeight: 'bold', color: 'red' };
-                        }
+                        const cellValue = cell.getValue();
+                        const isLuDownload = cellValue === 'LuDownload';
+                        const cellStyle = getTableCellStyles(cell);
                         return (
                           <td key={cell.id} style={cellStyle}>
-                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                            {isLuDownload ? <MdDownload className={'tw-cursor-pointer dropdown'} /> : flexRender(cell.column.columnDef.cell, cell.getContext())}
                           </td>
                         );
                       })}

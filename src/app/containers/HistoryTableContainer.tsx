@@ -9,7 +9,6 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
 } from '@tanstack/table-core';
-import { LuDownload } from 'react-icons/lu';
 import { useEffect, useMemo, useState } from 'react';
 import { fuzzyFilter, fuzzySort } from '@/app/history/SortAndFilterByFuzzy';
 import { flexRender, useReactTable } from '@tanstack/react-table';
@@ -44,7 +43,7 @@ export default function HistoryTableContainer() {
     { accessorKey: 'location', header: () => 'Location' },
     { accessorKey: 'lat', header: () => 'Lat.' },
     { accessorKey: 'lng', header: () => 'Lng.' },
-    { accessorKey: 'status', header: () => 'Earthquake Downloading Status' },
+    { accessorKey: 'status', header: () => 'Status' },
     { accessorKey: 'algorithms', header: () => 'Algorithms' },
     { accessorKey: 'platform', header: () => 'Platform' },
     { accessorKey: 'preData', header: () => 'Processed Pre-Data' },
@@ -192,9 +191,9 @@ export default function HistoryTableContainer() {
           status: item.status,
           algorithms: 'D-InSAR',
           platform: 'Sentinel-1A',
-          preData: 'Downloaded',
-          postData: 'Downloaded',
-          downloads: LuDownload,
+          preData: 'Waiting',
+          postData: 'Waiting',
+          downloads: 'LuDownload',
         };
       });
 
