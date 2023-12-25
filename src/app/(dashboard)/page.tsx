@@ -43,6 +43,7 @@ export default function Page() {
         return {
           id: item.id,
           createdAt: item.properties.createdAt,
+          date: item.properties.createdAt,
           isRead: item.is_read,
           lat: item.geometry.coordinates[1],
           lng: item.geometry.coordinates[0],

@@ -1,5 +1,6 @@
 import { EarthquakesTableType } from '@/app/containers/EarthquakesTableContainer';
 import HistoryFilter from '@/app/history/HistoryFilter';
+import { getTableCellStyles } from '@/app/utils/getTableCellStyles';
 import { flexRender } from '@tanstack/react-table';
 import { Table } from '@tanstack/table-core';
 
@@ -28,7 +29,7 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
                         <div
                           {...{
                             className: header.column.getCanSort()
-                              ? 'cursor-pointer select-none'
+                              ? 'tw-cursor-pointer tw-select-none'
                               : '',
                             onClick: header.column.getToggleSortingHandler(),
                           }}
@@ -57,12 +58,8 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
             return (
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
-                  let cellStyle = {};
 
-                  // TODO: 리팩토링할 때 타입 단언 수정하기
-                  if (cell.column.id === 'mag' && parseFloat(cell.getValue() as string) >= 5.0) {
-                    cellStyle = { fontWeight: 'bold', color: 'red' };
-                  }
+                  const cellStyle = getTableCellStyles(cell);
                   return (
                     <td key={cell.id} style={cellStyle}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
