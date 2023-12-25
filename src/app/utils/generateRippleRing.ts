@@ -28,6 +28,7 @@ export default function RippleRing({
   currentMap,
   markersRef,
   mag,
+  status,
   location,
   lat,
   lng,
@@ -74,13 +75,13 @@ export default function RippleRing({
           <span class="btn btn-success btn-circle d-flex align-items-center">
             <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
           </span>
-          <span class="tw-font-sans">Pre-Earthquake Image Downloaded </span>
+          <span class="tw-font-sans">Pre-Data Processed </span>
         </div>
         <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
           <span class="btn btn-success btn-circle d-flex align-items-center">
             <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
           </span>
-          <span class="tw-font-sans">Post-Earthquake Image Downloaded</span>
+          <span class="tw-font-sans">Post-Data Processed</span>
         </div>
       </div>
 
