@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { SERVER_HOST, PAGE_LIMIT } from '@/app/common/constants/environment.const';
 // import { Earthquake } from '@/app/containers/HistoryTableContainer';
-import { EqPointsType } from '@/app/store/GlobalStore';
+// import { EqPointsType } from '@/app/store/GlobalStore';
 import { UsgsStatusEnum } from '../enum/usgs.status.enum';
 
 export interface UsgsListItem {
@@ -70,7 +70,7 @@ export async function getUsgsList() {
     const response = await axios.get(`${SERVER_HOST}/usgs/list?take=${PAGE_LIMIT}`);
     return response.data as UsgsList;
   } catch (error) {
-    console.error('Error fetching data: ', error);
+    console.error('데이터를 불러오는 데 오류가 발생했습니다: ', error);
     return null;
     // Handle the error accordingly
   }
