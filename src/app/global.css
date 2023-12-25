@@ -156,12 +156,4 @@ a[aria-disabled='true'] {
   opacity: 0.3;
 }
 
-.Downloaded {
-  background-color: #1a9bfc;
-  font-weight: 400;
-  border-radius: 6px;
-  padding: 4px 13px;
-  font-size: 0.75rem;
-  color: #fff;
-  margin-left: 5px;
-}
+
