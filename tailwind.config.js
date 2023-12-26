@@ -9,7 +9,7 @@ module.exports = {
     // Or if using `src` directory:
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  safelist: ['tw-bg-ERROR'],
+  safelist: ['tw-bg-ERROR', 'tw-bg-INFO'],
   theme: {
     extend: {
       colors: {
