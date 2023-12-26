@@ -32,12 +32,18 @@ export const getProcessStatus = (currentEqPoint: EqPointsType) => {
     );
   };
 
+  // TODO: Launch Process 버튼을 눌렀을 때, API 요청 보내기.
   const startProcessButton = (
-    <button className="tw-flex tw-h-[41px] tw-w-[150px] tw-items-center tw-justify-center tw-gap-[5px] tw-rounded-[10px] tw-bg-INFO tw-text-white tw-shadow-lg">
+    <button
+      className="tw-flex tw-h-[41px] tw-w-[150px] tw-items-center tw-justify-center tw-gap-[5px] tw-rounded-[10px] tw-bg-INFO tw-text-[16px] tw-font-[400] tw-tracking-[-1px] tw-text-white tw-shadow-lg hover:tw-bg-opacity-90"
+      onClick={() => {}}
+    >
       <MdOutlineRocketLaunch size={20} />
       <span>Launch Process</span>
     </button>
   );
+
+  // TODO: Stop Process 버튼을 눌렀을 때, API 요청 보내기.
 
   const dataAcquisitionText = (acquisitionDate: string) => {
     return `Acquisition Date: ${acquisitionDate}`;
@@ -57,7 +63,7 @@ export const getProcessStatus = (currentEqPoint: EqPointsType) => {
     'WAITING_PROCESS' = 'Waiting Image Processing...',
   }
 
-  // TODO: Data Acquisition, Processing Algorithms, Processing Time 등의 정보를 추가할 수 있는지?
+  // TODO: Data Acquisition, Processing Algorithms 등의 정보를 추가할 수 있는지?
   const processStatus: ProcessStatusType[] = [];
   switch (status) {
     case UsgsStatusEnum.COLLECTING1:
