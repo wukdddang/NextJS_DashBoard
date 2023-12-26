@@ -44,7 +44,7 @@ export const getTableCellStyles = <T>(cell: Cell<T, unknown>, isHistoryPage: boo
     } else if (cell.getValue() === UsgsStatusEnum.STOPPED) {
       cellStyle = { ...cellStyle, color: errorColor };
     } else if (cell.getValue() === UsgsStatusEnum.WAITING) {
-      cellStyle = { ...cellStyle, color: iconColor };
+      cellStyle = { ...cellStyle, color: warnColor };
     } else if (cell.getValue() === UsgsStatusEnum.ACTIVE) {
       cellStyle = { ...cellStyle, color: infoColor };
     } else if (cell.getValue() === UsgsStatusEnum.FAILED) {
