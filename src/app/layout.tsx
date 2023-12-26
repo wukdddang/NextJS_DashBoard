@@ -10,10 +10,11 @@ import React from 'react';
 import SideBarContainer from '@/app/containers/SideBarContainer';
 import BreadcrumbContainer from './containers/BreadcrumbContainer';
 import { MSWComponent } from './components/settings/MSWComponent';
+import Script from 'next/script';
 
 const lexend = Lexend({
   subsets: ['latin-ext'],
-  weight: ['200', '300', '700'],
+  weight: ['200', '300', '400', '700'],
   variable: '--font-lexend',
 });
 
@@ -36,6 +37,16 @@ export default function RootLayout(props: Props) {
         <SideBarContainer />
         {props.children}
         <ToastContainer />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          crossOrigin="anonymous"
+        ></Script>
+        <Script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+          integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+          crossOrigin="anonymous"
+        ></Script>
       </body>
     </html>
   );
