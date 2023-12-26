@@ -1,6 +1,24 @@
+// import { EarthquakePointTableType } from '@/app/containers/EarthquakePointTableContainer';
+// import HistoryFilter from '@/app/history/HistoryFilter';
 import { EqPointsType } from '@/app/store/GlobalStore';
+import { ProcessStatusType } from '@/app/utils/getProcessStatus';
+// import { getTableCellStyles } from '@/app/utils/getTableCellStyles';
+// import { flexRender } from '@tanstack/react-table';
+// import { Table } from '@tanstack/table-core';
 
-export default function EarthquakePointTable({ currentEqPoint }: { currentEqPoint: EqPointsType }) {
+type Props = {
+  // table: Table<EarthquakePointTableType>;
+  processStatus: ProcessStatusType[];
+  currentEqPoint: EqPointsType;
+  isHistoryPage?: boolean;
+};
+
+export default function EarthquakePointTable({
+  // table,
+  processStatus,
+  currentEqPoint,
+  isHistoryPage = false,
+}: Props) {
   return (
     <>
       <div className="tw-flex tw-w-full tw-items-center tw-pb-4">
@@ -21,110 +39,76 @@ export default function EarthquakePointTable({ currentEqPoint }: { currentEqPoin
           )}
         </p>
       </div>
-      <table className="table mb-0 table-hover align-middle text-nowrap">
-        <thead className="tw-border-t-2">
-          <tr>
-            <th rowSpan={2} colSpan={1} className="border-top-0">
-              Status
-            </th>
-            <th rowSpan={2} colSpan={1} className="border-top-0">
-              Phase
-            </th>
-
-            <th rowSpan={2} colSpan={1} className="border-top-0">
-              Data Acquisition / Expecting Date
-            </th>
-            <th rowSpan={2} colSpan={1} className="border-top-0">
-              Processing Algorithms
-            </th>
-          </tr>
+      {processStatus.map((status, idx) => {
+        return (
+          <div key={idx} className="tw-flex tw-w-full tw-items-center tw-pb-4">
+            <h4 className="tw-mr-4 tw-text-[42px] tw-font-light tw-tracking-[-1px]">
+              {status?.status}
+            </h4>
+            <p className="tw-flex tw-flex-col">
+              <span className="tw-text-[28px] tw-font-[300] tw-tracking-[-1px]">
+                {status?.phase}
+              </span>
+              <span className="tw-text-[14px] tw-tracking-[-1px] tw-opacity-50">
+                {status?.dataAcquisition}
+              </span>
+            </p>
+          </div>
+        );
+      })}
+      {/* <table className="table table-striped">
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => {
+                return (
+                  <th key={header.id} colSpan={header.colSpan}>
+                    {header.isPlaceholder ? null : (
+                      <>
+                        <div
+                          {...{
+                            className: header.column.getCanSort()
+                              ? 'tw-cursor-pointer tw-select-none tw-font-bold tw-text-[12px]'
+                              : '',
+                            onClick: header.column.getToggleSortingHandler(),
+                          }}
+                        >
+                          {flexRender(header.column.columnDef.header, header.getContext())}
+                          {{
+                            asc: ' 🔼',
+                            desc: ' 🔽',
+                          }[header.column.getIsSorted() as string] ?? null}
+                        </div>
+                        {header.column.getCanFilter() ? (
+                          <div>
+                            <HistoryFilter column={header.column} table={table} />
+                          </div>
+                        ) : null}
+                      </>
+                    )}
+                  </th>
+                );
+              })}
+            </tr>
+          ))}
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div className="d-flex align-items-center">
-                <div className="tw-mr-2">
-                  <a href="#" className="btn btn-success btn-circle d-flex align-items-center">
-                    <i className="mdi mdi-check text-white fs-4"></i>
-                  </a>
-                </div>
-              </div>
-            </td>
-            <td>Pre-Earthquake</td>
-            <td>
-              <span className="badge tw-bg-INFO">2024-01-01T01:23:19</span>
-            </td>
-            <td>
-              {/* <div className="d-flex justify-content-between">
-                                    <span className="badge bg-danger">Failed</span>
-                                  </div> */}
-              -
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div className="d-flex align-items-center">
-                <div className="tw-mr-2">
-                  <a href="#" className="btn btn-circle d-flex align-items-center tw-bg-INFO">
-                    <i className="mdi mdi-exclamation text-white fs-4"></i>
-                  </a>
-                </div>
-              </div>
-            </td>
-            <td>Post-Earthquake</td>
-            <td>
-              <span className="badge tw-bg-INFO">2024-01-13T01:23:19</span>
-            </td>
-            <td>
-              {/* <div className="d-flex justify-content-between">
-                                    <span className="badge bg-danger">Failed</span>
-                                  </div> */}
-              -
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div className="d-flex align-items-center">
-                <div className="tw-mr-2">
-                  <a href="#" className="btn btn-circle d-flex align-items-center tw-bg-ICON">
-                    <i className="mdi mdi-exclamation text-white fs-4"></i>
-                  </a>
-                </div>
-              </div>
-            </td>
-            <td>SAR Image Process</td>
-            <td>{/* <span className="badge tw-bg-ICON">2024-01-01T01:23:19</span> */}-</td>
-            <td>
-              {/* <div className="d-flex justify-content-between">
-                                    <span className="badge bg-danger">Failed</span>
-                                  </div> */}
-              <div className="tw-flex tw-gap-1">
-                <span className="badge tw-bg-SUCCESS">D-InSAR</span>
-                <span className="badge tw-bg-SUCCESS">PS-InSAR</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div className="d-flex align-items-center">
-                <div className="tw-mr-2">
-                  <a href="#" className="btn btn-circle d-flex align-items-center tw-bg-ICON">
-                    <i className="mdi mdi-flag-outline text-white fs-4"></i>
-                  </a>
-                </div>
-              </div>
-            </td>
-            <td>SARDIP Event Driven Process</td>
-            <td>-</td>
-            <td>
-              {/* <div className="d-flex justify-content-between">
-                                    <span className="badge bg-danger">Failed</span>
-                                  </div> */}
-              -
-            </td>
-          </tr>
+          {table.getRowModel().rows.map((row) => {
+            return (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => {
+                  const cellStyle = getTableCellStyles(cell, isHistoryPage);
+                  return (
+                    <td key={cell.id} style={cellStyle}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
         </tbody>
-      </table>
+      </table> */}
     </>
   );
 }
