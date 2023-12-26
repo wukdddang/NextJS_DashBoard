@@ -156,4 +156,7 @@ a[aria-disabled='true'] {
   opacity: 0.3;
 }
 
-
+.dropdown-toggle-icon::after,
+.dropdown-toggle-icon::before {
+  display: none;
+}
