@@ -10,6 +10,8 @@ import { getUsgsList } from '@/app/_lib/getUsgsList';
 import EarthquakesTableContainer, {
   EarthquakesTableType,
 } from '@/app/containers/EarthquakesTableContainer';
+import EarthquakePointTableContainer from '../containers/EarthquakePointTableContainer';
+// import { useRouter } from 'next/navigation';
 const MapContainer = dynamic(() => import('@/app/containers/MapContainer'), { ssr: false });
 
 export default function Page() {
@@ -21,6 +23,8 @@ export default function Page() {
   const [isReadEarthquakes, setIsReadEarthquakes] = useState<EarthquakesTableType[]>(
     [] as EarthquakesTableType[]
   );
+
+  // const router = useRouter();
 
   const currentEqPoint = currentEqPoints.find((eqPoint) => {
     if (
@@ -56,7 +60,8 @@ export default function Page() {
       // history earthquakes용 데이터
       setHistoryTableData(newEqPoints);
       // unconfirmed earthquakes용 데이터
-      setCurrentEqPoints(newEqPoints.filter((point) => !point.isRead));
+      // setCurrentEqPoints(newEqPoints.filter((point) => !point.isRead));
+      setCurrentEqPoints(newEqPoints);
     });
   }, []);
 
@@ -89,7 +94,7 @@ export default function Page() {
                 <div className="card-body">
                   <div className="table-responsive">
                     {currentEqPoint ? (
-                      <EarthquakePointTable currentEqPoint={currentEqPoint} />
+                      <EarthquakePointTableContainer currentEqPoint={currentEqPoint} />
                     ) : (
                       <EarthquakesTableContainer
                         data={isReadEarthquakes}
