@@ -3,14 +3,21 @@ import HistoryFilter from '@/app/history/HistoryFilter';
 import { getTableCellStyles } from '@/app/utils/getTableCellStyles';
 import { flexRender } from '@tanstack/react-table';
 import { Table } from '@tanstack/table-core';
+import { useEffect } from 'react';
+// import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 type Props = {
   table: Table<EarthquakesTableType>;
   tableTitle: string;
+  // router: AppRouterInstance;
   isHistoryPage?: boolean;
 };
 
 export default function EarthquakesTable({ table, tableTitle, isHistoryPage = false }: Props) {
+  useEffect(() => {
+    table.setPageSize(4);
+  }, [table]);
+
   return (
     <div className="table-responsive">
       <div>
@@ -29,7 +36,7 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
                         <div
                           {...{
                             className: header.column.getCanSort()
-                              ? 'tw-cursor-pointer tw-select-none'
+                              ? 'tw-cursor-pointer tw-select-none tw-font-bold tw-text-[12px]'
                               : '',
                             onClick: header.column.getToggleSortingHandler(),
                           }}
@@ -58,8 +65,7 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
             return (
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
-
-                  const cellStyle = getTableCellStyles(cell);
+                  const cellStyle = getTableCellStyles(cell, isHistoryPage);
                   return (
                     <td key={cell.id} style={cellStyle}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -73,41 +79,55 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
       </table>
       <div className="h-2" />
       <div className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-        <div>
+        <div className="tw-flex tw-items-center tw-justify-between tw-gap-1">
           <button
-            className="border rounded p-1"
+            className="btn tw-rounded tw-border tw-bg-PRIMARY tw-pt-2 tw-text-white tw-drop-shadow-lg"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
-            {'<<'}
+            {'Home'}
           </button>
           <button
-            className="border rounded p-1"
+            className="btn btn-primary tw-rounded tw-border tw-pt-2 tw-drop-shadow-lg"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            {'<'}
+            {'Prev'}
           </button>
           <button
-            className="border rounded p-1"
+            className="btn btn-primary tw-rounded tw-border tw-pt-2 tw-drop-shadow-lg"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            {'>'}
+            {'Next'}
           </button>
           <button
-            className="border rounded p-1"
+            className="btn tw-rounded tw-border tw-bg-PRIMARY tw-pt-2 tw-text-white tw-drop-shadow-lg"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
-            {'>>'}
+            {'End'}
           </button>
         </div>
-        <span className="flex items-center gap-1">
-          <div>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-          </strong>
+
+        <span className="tw-flex tw-items-center tw-gap-1">
+          <div>
+            <span>Page</span>
+            <select
+              value={table.getState().pagination.pageIndex}
+              onChange={(e) => {
+                table.setPageIndex(Number(e.target.value));
+              }}
+            >
+              {Array.from({ length: table.getPageCount() }, (_, i) => i + 1).map((pageSize) => (
+                <option key={pageSize} value={pageSize - 1}>
+                  <strong>{pageSize}</strong>
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* <div>Page</div> */}
+          <strong>of {table.getPageCount()}</strong>
         </span>
       </div>
       <div>{table.getPrePaginationRowModel().rows.length} Rows</div>
