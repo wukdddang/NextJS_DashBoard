@@ -194,8 +194,9 @@ export default function HistoryTableContainer({
               ? item.geometry.coordinates[0] + '°E'
               : item.geometry.coordinates[0] + '°W',
           status: item.status,
-          algorithms: 'D-InSAR',
+          algorithms: '-',
           platform: 'Sentinel-1A',
+          // TODO: preData, postData를 어떻게 할건지? 논의 필요
           preData: 'Waiting',
           postData: 'Waiting',
           downloads: 'LuDownload',
