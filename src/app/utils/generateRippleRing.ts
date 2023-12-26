@@ -85,7 +85,7 @@ export default function RippleRing({
         </div>
       </div>
 
-      <div class="tw-flex">
+      <div class="tw-flex tw-gap-2">
         <button id="popup-reset-button" class="btn btn-primary tw-ml-auto tw-flex tw-justify-center tw-items-center">
           <i class="mdi mdi-reload tw-w-[20px] tw-h-[20px]"></i> 
           <span>Reset View</span>
