@@ -66,14 +66,15 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    const filteredEqPoints = currentEqPoints.filter(eqPoint => !eqPoint.isRead)
-      .map(eqPoint => ({
+    const filteredEqPoints = currentEqPoints
+      .filter((eqPoint) => !eqPoint.isRead)
+      .map((eqPoint) => ({
         mag: eqPoint.mag,
         date: eqPoint.createdAt,
         location: eqPoint.location,
         status: eqPoint.status,
       }));
-  
+
     setIsReadEarthquakes(filteredEqPoints);
   }, [currentEqPoints]);
 
