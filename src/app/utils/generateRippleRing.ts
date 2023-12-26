@@ -100,20 +100,28 @@ export default function RippleRing({
     `
     );
     marker.on('popupopen', async (e) => {
-      await axios
-        .put(`${SERVER_HOST}/usgs/read/${id}`)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // await axios
+      //   .put(`${SERVER_HOST}/usgs/read/${id}`)
+      //   .then((res) => {
+      //     console.log(res);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
 
       const markerElement = e.popup.getElement();
       const detailButton = markerElement?.querySelector('#popup-view-detail-button');
       const resetButton = markerElement?.querySelector('#popup-reset-button');
       if (detailButton) {
-        detailButton.addEventListener('click', () => {
+        detailButton.addEventListener('click', async () => {
+          await axios
+            .put(`${SERVER_HOST}/usgs/read/${id}`)
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
           router.replace(
             `/?location=${location}&createdAt=${createdAt}&lat=${lat}&lng=${lng}&mag=${mag}`,
             {
