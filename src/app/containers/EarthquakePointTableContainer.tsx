@@ -2,7 +2,7 @@
 
 import EarthquakePointTable from '@/app/components/organisms/EarthquakePointTable';
 import { EqPointsType } from '@/app/store/GlobalStore';
-import { getProcessStatus } from '../utils/getProcessStatus';
+import { getProcessStatus } from '@/app/utils/getProcessStatus';
 // import { useReactTable } from '@tanstack/react-table';
 // import {
 //   ColumnDef,
