@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 
 import dynamic from 'next/dynamic';
 import useGlobalStore from '@/app/store/GlobalStore';
-import EarthquakePointTable from '@/app/components/organisms/EarthquakePointTable';
+// import EarthquakePointTable from '@/app/components/organisms/EarthquakePointTable';
 import { useEffect, useState } from 'react';
 import { getUsgsList } from '@/app/_lib/getUsgsList';
 import EarthquakesTableContainer, {
@@ -66,18 +66,14 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    // TODO: 리팩토링할 때 타입 단언 수정하기
-    const filteredEqPoints: EarthquakesTableType[] = currentEqPoints.map((eqPoint) => {
-      if (!eqPoint.isRead) {
-        return {
-          mag: eqPoint.mag,
-          date: eqPoint.createdAt,
-          location: eqPoint.location,
-          status: eqPoint.status,
-        };
-      }
-    }) as EarthquakesTableType[];
-
+    const filteredEqPoints = currentEqPoints.filter(eqPoint => !eqPoint.isRead)
+      .map(eqPoint => ({
+        mag: eqPoint.mag,
+        date: eqPoint.createdAt,
+        location: eqPoint.location,
+        status: eqPoint.status,
+      }));
+  
     setIsReadEarthquakes(filteredEqPoints);
   }, [currentEqPoints]);
 
