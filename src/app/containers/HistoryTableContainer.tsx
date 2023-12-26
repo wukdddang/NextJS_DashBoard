@@ -31,7 +31,11 @@ export type Earthquake = {
   status: UsgsStatusEnum;
 } & Omit<EqPointsType, 'createdAt' | 'isRead' | 'lat' | 'lng'>;
 
-export default function HistoryTableContainer() {
+export default function HistoryTableContainer({
+  isHistoryPage = false,
+}: {
+  isHistoryPage?: boolean;
+}) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
   const [data, setData] = useState<Earthquake[]>([]);
@@ -176,10 +180,11 @@ export default function HistoryTableContainer() {
           id: item.id,
           mag: String(item.properties.mag),
           date: item.properties.createdAt,
-          location:
-            item.properties.place.split('of').length > 1
-              ? item.properties.place.split('of')[1]
-              : item.properties.place,
+          // location:
+          //   item.properties.place.split('of').length > 1
+          //     ? item.properties.place.split('of')[1]
+          //     : item.properties.place,
+          location: item.properties.place,
           lat:
             item.geometry.coordinates[1] > 0
               ? item.geometry.coordinates[1] + '°N'
@@ -221,6 +226,7 @@ export default function HistoryTableContainer() {
       data={data}
       pageIndex={pageIndex}
       pageSize={pageSize}
+      isHistoryPage={isHistoryPage}
     />
   );
 }

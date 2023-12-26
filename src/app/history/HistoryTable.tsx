@@ -7,7 +7,6 @@ import PaginationNumber from '../containers/PaginationNumber';
 import { getTableCellStyles } from '../utils/getTableCellStyles';
 import { MdDownload } from 'react-icons/md';
 
-
 type Earthquake = {
   date: string;
   lat: string;
@@ -26,6 +25,7 @@ type Props = {
   data: Earthquake[];
   pageIndex: number;
   pageSize: number;
+  isHistoryPage?: boolean;
 };
 
 export default function HistoryTable({
@@ -35,13 +35,16 @@ export default function HistoryTable({
   // data,
   pageIndex,
   pageSize,
+  isHistoryPage = false,
 }: Props) {
   return (
     <div className="card">
       <div className="card-body">
         <div className="d-md-flex">
           <div>
-            <h4 className="card-title display-4">Histories of Last Earthquakes</h4>
+            <h4 className="tw-text-[24px] tw-font-bold tw-tracking-[-1px]">
+              Histories of Last Earthquakes
+            </h4>
           </div>
         </div>
         <div className="table-responsive">
@@ -51,12 +54,12 @@ export default function HistoryTable({
                 <DebouncedInput
                   value={globalFilter ?? ''}
                   onChange={(value) => setGlobalFilter(String(value))}
-                  className="p-2 font-lg border border-block"
+                  className="tw-font-lg tw-border-block tw-border tw-p-2"
                   placeholder="Search with keywords..."
                 />
               </div>
-              <div className="flex items-center gap-2">
-                <span className="flex items-center gap-1">
+              <div className="gap-2 tw-flex tw-items-center">
+                {/* <span className="tw-flex tw-items-center tw-gap-1">
                   Go to page:
                   <input
                     type="number"
@@ -68,7 +71,7 @@ export default function HistoryTable({
                     }}
                     className="border p-1 rounded w-16"
                   />
-                </span>
+                </span> */}
                 <select
                   value={table.getState().pagination.pageSize}
                   onChange={(e) => {
@@ -96,7 +99,7 @@ export default function HistoryTable({
                               <div
                                 {...{
                                   className: header.column.getCanSort()
-                                    ? 'tw-cursor-pointer tw-select-none tw-font-bold'
+                                    ? 'tw-cursor-pointer tw-select-none tw-font-bold tw-text-[12px]'
                                     : '',
                                   onClick: header.column.getToggleSortingHandler(),
                                 }}
@@ -125,13 +128,16 @@ export default function HistoryTable({
                   return (
                     <tr key={row.id}>
                       {row.getVisibleCells().map((cell) => {
-
                         const cellValue = cell.getValue();
                         const isLuDownload = cellValue === 'LuDownload';
-                        const cellStyle = getTableCellStyles(cell);
+                        const cellStyle = getTableCellStyles(cell, isHistoryPage);
                         return (
                           <td key={cell.id} style={cellStyle}>
-                            {isLuDownload ? <MdDownload className={'tw-cursor-pointer dropdown'} /> : flexRender(cell.column.columnDef.cell, cell.getContext())}
+                            {isLuDownload ? (
+                              <MdDownload className={'dropdown tw-cursor-pointer'} />
+                            ) : (
+                              flexRender(cell.column.columnDef.cell, cell.getContext())
+                            )}
                           </td>
                         );
                       })}
@@ -141,43 +147,58 @@ export default function HistoryTable({
               </tbody>
             </table>
             <div className="h-2" />
-            <div className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-              <div>
+            <div className="tw-flex tw-items-center tw-justify-between">
+              <div className="tw-flex tw-items-center tw-justify-between tw-gap-1">
                 <button
-                  className="border rounded p-1"
+                  className="btn tw-rounded tw-border tw-bg-PRIMARY tw-pt-2 tw-text-white tw-drop-shadow-lg"
                   onClick={() => table.setPageIndex(0)}
                   disabled={!table.getCanPreviousPage()}
                 >
-                  {'<<'}
+                  {'Home'}
                 </button>
                 <button
-                  className="border rounded p-1"
+                  className="btn btn-primary tw-rounded tw-border tw-pt-2 tw-drop-shadow-lg"
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
                 >
-                  {'<'}
+                  {'Prev'}
                 </button>
                 <button
-                  className="border rounded p-1"
+                  className="btn btn-primary tw-rounded tw-border tw-pt-2 tw-drop-shadow-lg"
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
                 >
-                  {'>'}
+                  {'Next'}
                 </button>
                 <button
-                  className="border rounded p-1"
+                  className="btn tw-rounded tw-border tw-bg-PRIMARY tw-pt-2 tw-text-white tw-drop-shadow-lg"
                   onClick={() => table.setPageIndex(table.getPageCount() - 1)}
                   disabled={!table.getCanNextPage()}
                 >
-                  {'>>'}
+                  {'End'}
                 </button>
               </div>
-              <PaginationNumber table={table} pageIndex={pageIndex} pageSize={pageSize} />
-              <span className="flex items-center gap-1">
-                <div>Page</div>
-                <strong>
-                  {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-                </strong>
+              {/* <PaginationNumber table={table} pageIndex={pageIndex} pageSize={pageSize} /> */}
+              <span className="tw-flex tw-items-center tw-gap-1">
+                <div>
+                  <span>Page</span>
+                  <select
+                    value={table.getState().pagination.pageIndex}
+                    onChange={(e) => {
+                      table.setPageIndex(Number(e.target.value));
+                    }}
+                  >
+                    {Array.from({ length: table.getPageCount() }, (_, i) => i + 1).map(
+                      (pageSize) => (
+                        <option key={pageSize} value={pageSize - 1}>
+                          <strong>{pageSize}</strong>
+                        </option>
+                      )
+                    )}
+                  </select>
+                </div>
+                {/* <div>Page</div> */}
+                <strong>of {table.getPageCount()}</strong>
               </span>
             </div>
             <div>{table.getPrePaginationRowModel().rows.length} Rows</div>
