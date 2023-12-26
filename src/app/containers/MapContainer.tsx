@@ -24,7 +24,7 @@ export default function MapContainer() {
   const currentMap = useGlobalStore((state) => state.currentMap);
   const currentEqPoints = useGlobalStore((state) => state.currentEqPoints);
   const setCurrentMap = useGlobalStore((state) => state.setCurrentMap);
-  const setCurrentEqPoints = useGlobalStore((state) => state.setCurrentEqPoints);
+  // const setCurrentEqPoints = useGlobalStore((state) => state.setCurrentEqPoints);
   const markersRef = useRef<{ [key: string]: L.Marker }>({});
   const router = useRouter();
 
