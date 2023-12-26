@@ -134,7 +134,32 @@ export default function HistoryTable({
                         return (
                           <td key={cell.id} style={cellStyle}>
                             {isLuDownload ? (
-                              <MdDownload className={'dropdown tw-cursor-pointer'} />
+                              <div className="dropstart">
+                                <span
+                                  className="dropdown-toggle dropdown-toggle-icon"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <MdDownload className={'tw-cursor-pointer'} />
+                                </span>
+                                <ul className="dropdown-menu">
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Action
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Another action
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a className="dropdown-item" href="#">
+                                      Something else here
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
                             ) : (
                               flexRender(cell.column.columnDef.cell, cell.getContext())
                             )}
