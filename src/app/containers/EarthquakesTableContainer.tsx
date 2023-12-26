@@ -12,8 +12,8 @@ import {
   getSortedRowModel,
 } from '@tanstack/table-core';
 import { useReactTable } from '@tanstack/react-table';
-import EarthquakesTable from '../components/organisms/EarthquakesTable';
-import { fuzzyFilter } from '../history/SortAndFilterByFuzzy';
+import EarthquakesTable from '@/app/components/organisms/EarthquakesTable';
+import { fuzzyFilter } from '@/app/history/SortAndFilterByFuzzy';
 
 export type EarthquakesTableType = Pick<Earthquake, 'mag' | 'date' | 'location' | 'status'>;
 

@@ -5,7 +5,7 @@ import { handlers } from './handlers';
 
 const app = express();
 const port = 3333;
-const ip = '192.168.0.2'
+const ip = '192.168.0.2';
 
 app.use(cors({ origin: 'http://localhost:3000', optionsSuccessStatus: 200, credentials: true }));
 app.use(express.json());
