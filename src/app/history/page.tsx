@@ -15,7 +15,7 @@ export default function HistoryPage() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
-              <HistoryTableContainer />
+              <HistoryTableContainer isHistoryPage={false} />
               {/* <table id="example" className="table table-striped" style={{ width: '100%' }}>
                 <thead>
                   <tr>
