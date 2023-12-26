@@ -33,8 +33,12 @@ export const getTableCellStyles = <T>(cell: Cell<T, unknown>, isHistoryPage: boo
     fontWeight: 'normal',
   };
 
-  if (cell.column.id === 'mag' && parseFloat(cell.getValue() as string) >= 5.0) {
-    cellStyle = { ...cellStyle, fontWeight: 'bold', color: errorColor };
+  if (cell.column.id === 'mag') {
+    cellStyle = { ...cellStyle, fontWeight: 'bold', fontSize: '16px' };
+
+    if (parseFloat(cell.getValue() as string) >= 5.0) {
+      cellStyle = { ...cellStyle, color: errorColor };
+    }
   } else if (cell.column.id === 'date') {
     cellStyle = { ...cellStyle, fontSize: '12px' };
   } else if (cell.column.id === 'status') {
