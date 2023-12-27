@@ -10,7 +10,7 @@ import { getUsgsList } from '@/app/_lib/getUsgsList';
 import EarthquakesTableContainer, {
   EarthquakesTableType,
 } from '@/app/containers/EarthquakesTableContainer';
-import EarthquakePointTableContainer from '../containers/EarthquakePointTableContainer';
+import EarthquakePointTableContainer from '@/app/containers/EarthquakePointTableContainer';
 // import { useRouter } from 'next/navigation';
 const MapContainer = dynamic(() => import('@/app/containers/MapContainer'), { ssr: false });
 
@@ -52,7 +52,7 @@ export default function Page() {
           lat: item.geometry.coordinates[1],
           lng: item.geometry.coordinates[0],
           location: item.properties.place,
-          mag: String(item.properties.mag),
+          mag: String(item.properties.mag.toFixed(1)),
           status: item.status,
         };
       });
