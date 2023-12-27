@@ -1,5 +1,5 @@
 import { EarthquakesTableType } from '@/app/containers/EarthquakesTableContainer';
-import HistoryFilter from '@/app/history/HistoryFilter';
+// import HistoryFilter from '@/app/history/HistoryFilter';
 import { getTableCellStyles } from '@/app/utils/getTableCellStyles';
 import { flexRender } from '@tanstack/react-table';
 import { Table } from '@tanstack/table-core';
@@ -47,11 +47,11 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
                             desc: ' 🔽',
                           }[header.column.getIsSorted() as string] ?? null}
                         </div>
-                        {header.column.getCanFilter() ? (
+                        {/* {header.column.getCanFilter() ? (
                           <div>
                             <HistoryFilter column={header.column} table={table} />
                           </div>
-                        ) : null}
+                        ) : null} */}
                       </>
                     )}
                   </th>
@@ -85,28 +85,28 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
-            {'Home'}
+            {'<<'}
           </button>
           <button
             className="btn btn-primary tw-rounded tw-border tw-pt-2 tw-drop-shadow-lg"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            {'Prev'}
+            {'<'}
           </button>
           <button
             className="btn btn-primary tw-rounded tw-border tw-pt-2 tw-drop-shadow-lg"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            {'Next'}
+            {'>'}
           </button>
           <button
             className="btn tw-rounded tw-border tw-bg-PRIMARY tw-pt-2 tw-text-white tw-drop-shadow-lg"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
-            {'End'}
+            {'>>'}
           </button>
         </div>
 
