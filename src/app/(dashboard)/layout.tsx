@@ -1,4 +1,4 @@
-import MainWrapper from '@/app/components/organisms/MainWrapper';
+import MainWrapper from '@/app/components/molecules/MainWrapper';
 
 export default function Layout(props: {
   children: React.ReactNode;

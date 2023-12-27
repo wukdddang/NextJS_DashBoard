@@ -4,7 +4,7 @@ import Breadcrumb from '@/app/components/organisms/Breadcrumb';
 import { usePathname } from 'next/navigation';
 import useGlobalStore from '@/app/store/GlobalStore';
 import CurrentProcessInfo from '@/app/components/organisms/CurrentProcessInfo';
-import MainWrapper from '@/app/components/organisms/MainWrapper';
+import MainWrapper from '@/app/components/molecules/MainWrapper';
 
 export default function BreadcrumbContainer() {
   const pathname = usePathname();

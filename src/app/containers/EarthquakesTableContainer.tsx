@@ -13,7 +13,7 @@ import {
 } from '@tanstack/table-core';
 import { useReactTable } from '@tanstack/react-table';
 import EarthquakesTable from '@/app/components/organisms/EarthquakesTable';
-import { fuzzyFilter } from '@/app/history/SortAndFilterByFuzzy';
+import { fuzzyFilter } from '@/app/utils/sortAndFilterByFuzzy';
 
 export type EarthquakesTableType = Pick<Earthquake, 'mag' | 'date' | 'location' | 'status'>;
 
