@@ -1,10 +1,10 @@
 import { Table } from '@tanstack/table-core';
 import { flexRender } from '@tanstack/react-table';
-import { EqPointsType } from '../store/GlobalStore';
-import HistoryFilter from './HistoryFilter';
+import { EqPointsType } from '../../store/GlobalStore';
+// import HistoryFilter from './HistoryFilter';
 import DebouncedInput from './DebouncedInput';
-import PaginationNumber from '../containers/PaginationNumber';
-import { getTableCellStyles } from '../utils/getTableCellStyles';
+// import PaginationNumber from '../containers/PaginationNumber';
+import { getTableCellStyles } from '../../utils/getTableCellStyles';
 import { MdDownload } from 'react-icons/md';
 
 type Earthquake = {
@@ -33,8 +33,8 @@ export default function HistoryTable({
   globalFilter,
   setGlobalFilter,
   // data,
-  pageIndex,
-  pageSize,
+  // pageIndex,
+  // pageSize,
   isHistoryPage = false,
 }: Props) {
   return (
@@ -59,19 +59,6 @@ export default function HistoryTable({
                 />
               </div>
               <div className="gap-2 tw-flex tw-items-center">
-                {/* <span className="tw-flex tw-items-center tw-gap-1">
-                  Go to page:
-                  <input
-                    type="number"
-                    min={1}
-                    defaultValue={table.getState().pagination.pageIndex + 1}
-                    onChange={(e) => {
-                      const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                      table.setPageIndex(page);
-                    }}
-                    className="border p-1 rounded w-16"
-                  />
-                </span> */}
                 <select
                   value={table.getState().pagination.pageSize}
                   onChange={(e) => {
@@ -110,11 +97,11 @@ export default function HistoryTable({
                                   desc: ' 🔽',
                                 }[header.column.getIsSorted() as string] ?? null}
                               </div>
-                              {header.column.getCanFilter() ? (
+                              {/* {header.column.getCanFilter() ? (
                                 <div>
                                   <HistoryFilter column={header.column} table={table} />
                                 </div>
-                              ) : null}
+                              ) : null} */}
                             </>
                           )}
                         </th>
@@ -179,28 +166,28 @@ export default function HistoryTable({
                   onClick={() => table.setPageIndex(0)}
                   disabled={!table.getCanPreviousPage()}
                 >
-                  {'Home'}
+                  {'<<'}
                 </button>
                 <button
                   className="btn btn-primary tw-rounded tw-border tw-pt-2 tw-drop-shadow-lg"
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
                 >
-                  {'Prev'}
+                  {'<'}
                 </button>
                 <button
                   className="btn btn-primary tw-rounded tw-border tw-pt-2 tw-drop-shadow-lg"
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
                 >
-                  {'Next'}
+                  {'>'}
                 </button>
                 <button
                   className="btn tw-rounded tw-border tw-bg-PRIMARY tw-pt-2 tw-text-white tw-drop-shadow-lg"
                   onClick={() => table.setPageIndex(table.getPageCount() - 1)}
                   disabled={!table.getCanNextPage()}
                 >
-                  {'End'}
+                  {'>>'}
                 </button>
               </div>
               {/* <PaginationNumber table={table} pageIndex={pageIndex} pageSize={pageSize} /> */}

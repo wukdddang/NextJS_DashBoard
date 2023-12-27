@@ -13,6 +13,7 @@ declare module '@tanstack/table-core' {
 export const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   // Rank the item
   const itemRank = rankItem(row.getValue(columnId), value);
+  // console.log(itemRank);
   // Store the itemRank info
   addMeta({
     itemRank,
