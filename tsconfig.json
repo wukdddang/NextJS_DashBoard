@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/BootStrapClient.tsx"
+    "src/app/components/settings/BootStrapClient.tsx"
   ],
   "exclude": ["node_modules"]
 }
