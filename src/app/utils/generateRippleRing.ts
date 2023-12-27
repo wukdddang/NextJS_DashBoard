@@ -2,16 +2,44 @@ import { EqPointsType } from '@/app/store/GlobalStore';
 import * as L from 'leaflet';
 import { isCurrentMapExist } from '@/app/types/TypePredicate';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { MAP_CENTER, MAP_FLY_TO_SPEED, MAP_ZOOM } from '@/app/containers/MapContainer';
+import {
+  MAP_CENTER,
+  MAP_FLY_TO_SPEED,
+  MAP_FLY_TO_ZOOM,
+  MAP_ZOOM,
+} from '@/app/containers/MapContainer';
 import { MutableRefObject } from 'react';
 import axios from 'axios';
 import { SERVER_HOST } from '@/app/common/constants/environment.const';
+import { getProcessStatus } from './getProcessStatus';
 
 const customIcon = L.divIcon({
   className: 'custom-icon',
   html: '<div class="pulse"></div>',
   iconSize: [30, 30],
 }); // 마커 아이콘 설정
+
+const getIconClass = (simpleStatus: any) => {
+  switch (simpleStatus) {
+    case 'success':
+      return 'mdi-check'; // 성공 아이콘 클래스
+    case 'waiting':
+      return 'mdi-exclamation'; // 대기 아이콘 클래스
+    default:
+      return 'mdi-information'; // 기본 아이콘 클래스
+  }
+};
+
+const getButtonClass = (simpleStatus: any) => {
+  switch (simpleStatus) {
+    case 'success':
+      return 'tw-bg-SUCCESS'; // 성공 상태에 대한 버튼 클래스
+    case 'waiting':
+      return 'tw-bg-ICON'; // 대기 상태에 대한 버튼 클래스
+    default:
+      return 'btn-default'; // 기본 버튼 클래스
+  }
+};
 
 // 지진 펄스 크기를 조정하는 함수
 function adjustPulseSize(zoomLevel: number) {
@@ -45,6 +73,11 @@ export default function RippleRing({
 
   // console.log(id);
   // console.log(markersRef.current[id]);
+  // console.log(getProcessStatus(status));
+  const processStatus = getProcessStatus(status);
+  // console.log(getEnumKeyByEnumValue(UsgsStatusEnum, processStatus[0]?.phase));
+
+  // console.log(getSimpleProcessStatus(status));
 
   if (!markersRef.current[id]) {
     const marker = L.marker([lat, lng], { icon: customIcon }).addTo(currentMap);
@@ -52,11 +85,16 @@ export default function RippleRing({
 
     marker.on('click', () => {
       // currentMap.setView(marker.getLatLng(), 15); // 새로운 줌 레벨
-      if (currentMap.getZoom() > 10) {
+      if (currentMap.getZoom() > MAP_FLY_TO_ZOOM) {
         return;
       }
-      currentMap.flyTo(marker.getLatLng(), 10, MAP_FLY_TO_SPEED); // 새로운 줌 레벨
+      currentMap.flyTo(marker.getLatLng(), MAP_FLY_TO_ZOOM, MAP_FLY_TO_SPEED); // 새로운 줌 레벨
     });
+
+    const iconClass0 = getIconClass(processStatus[0]?.simpleStatus);
+    const buttonClass0 = getButtonClass(processStatus[0]?.simpleStatus);
+    const iconClass1 = getIconClass(processStatus[1]?.simpleStatus);
+    const buttonClass1 = getButtonClass(processStatus[1]?.simpleStatus);
 
     marker.bindPopup(
       // TODO: Next.js에서 템플릿 문법 적용하는지? (ex. mustache, thymeleaf)
@@ -72,16 +110,18 @@ export default function RippleRing({
       </div>
       <div class="tw-flex tw-flex-col tw-gap-2 tw-mb-4">
         <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
-          <span class="btn btn-success btn-circle d-flex align-items-center">
-            <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
+          
+          <span class="btn ${buttonClass0} btn-circle d-flex align-items-center">
+            <i class="mdi ${iconClass0} text-white fs-4"></i>
           </span>
-          <span class="tw-font-sans">Pre-Data Processed </span>
+          <span class="tw-font-sans">${processStatus[0]?.phase}</span>
         </div>
         <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
-          <span class="btn btn-success btn-circle d-flex align-items-center">
-            <i class="mdi mdi-comment-multiple-outline text-white fs-4"></i>
+          
+          <span class="btn ${buttonClass1} btn-circle d-flex align-items-center">
+            <i class="mdi ${iconClass1} text-white fs-4"></i>
           </span>
-          <span class="tw-font-sans">Post-Data Processed</span>
+          <span class="tw-font-sans">${processStatus[1]?.phase}</span>
         </div>
       </div>
 
@@ -95,8 +135,6 @@ export default function RippleRing({
           <span class="tw-text-center">view in detail</span>
         </button>
       </div>
-      
-      
     `
     );
     marker.on('popupopen', async (e) => {

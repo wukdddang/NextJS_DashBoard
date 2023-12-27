@@ -17,6 +17,8 @@ export const MAP_FLY_TO_SPEED = {
   animate: true,
 };
 
+export const MAP_FLY_TO_ZOOM = 9;
+
 export default function MapContainer() {
   const mapRef = useRef<L.Map | null>(null);
   const tileLayerRef: MutableRefObject<L.TileLayer | null> = useRef(null);
