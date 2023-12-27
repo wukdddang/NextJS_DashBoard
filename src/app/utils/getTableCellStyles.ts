@@ -21,9 +21,7 @@ export const getTableCellStyles = <T>(cell: Cell<T, unknown>, isHistoryPage: boo
   const errorColor = tailwindColors?.ERROR;
   const warnColor = tailwindColors?.WARN;
   const infoColor = tailwindColors?.INFO;
-  const primaryColor = tailwindColors?.PRIMARY;
   const secondaryColor = tailwindColors?.SECONDARY;
-  const bodyColor = tailwindColors?.BODY_COLOR;
   const iconColor = tailwindColors?.ICON;
   const textColor = tailwindColors?.TEXT;
 

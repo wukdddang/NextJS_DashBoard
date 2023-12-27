@@ -104,10 +104,6 @@ export default function HistoryTableContainer({
           id: item.id,
           mag: String(item.properties.mag.toFixed(1)),
           date: item.properties.createdAt,
-          // location:
-          //   item.properties.place.split('of').length > 1
-          //     ? item.properties.place.split('of')[1]
-          //     : item.properties.place,
           location: item.properties.place,
           lat:
             item.geometry.coordinates[1] > 0

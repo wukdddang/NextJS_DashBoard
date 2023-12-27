@@ -9,10 +9,6 @@ export const MAP_TILES = {
     url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     options: {},
   },
-  // leaflet_dark: {
-  //   url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-  //   options: {},
-  // },
 };
 
 export type KIND_OF_MAP_TILES = keyof typeof MAP_TILES;

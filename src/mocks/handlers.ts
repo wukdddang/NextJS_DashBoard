@@ -1,7 +1,7 @@
 import { HttpResponse, http } from 'msw';
-// import { SERVER_HOST } from '@/app/common/constants/environment.const';
 
 export const handlers = [
+  // 동적으로 HOST를 설정하면 제대로 확인을 못해서, 일단은 하드코딩으로 설정
   http.get(`http://192.168.0.2:3333/api/usgs/list`, ({ request }) => {
     const url = new URL(request.url);
     const listLength = url.searchParams.get('take');

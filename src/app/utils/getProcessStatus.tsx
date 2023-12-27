@@ -1,5 +1,4 @@
 import { UsgsStatusEnum } from '@/app/enum/usgs.status.enum';
-// import { EqPointsType } from '@/app/store/GlobalStore';
 import { FaCheck, FaExclamation } from 'react-icons/fa6';
 import { MdOutlineRocketLaunch } from 'react-icons/md';
 import { AiOutlineStop } from 'react-icons/ai';
@@ -16,14 +15,7 @@ export type ProcessStatusType = {
   processButton?: JSX.Element;
 };
 
-// export function getEnumKeyByEnumValue(myEnum: any, enumValue: string): string | null {
-//   let keys = Object.keys(myEnum).filter((x) => myEnum[x] === enumValue);
-//   return keys.length > 0 ? keys[0] : null;
-// }
-
 export const getProcessStatus = (status: UsgsStatusEnum) => {
-  // const { status } = currentEqPoint;
-
   const successIcon = () => {
     return (
       <div className="tw-flex tw-h-[35px] tw-w-[35px] tw-items-center tw-justify-center tw-rounded-full tw-bg-SUCCESS tw-text-white">

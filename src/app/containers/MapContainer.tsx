@@ -13,7 +13,6 @@ export const MAP_CENTER: L.LatLngExpression = [36, 105.5];
 export const MAP_ZOOM = 3;
 export const MAP_FLY_TO_SPEED = {
   duration: 1,
-  // easeLinearity: 0.1,
   animate: true,
 };
 
@@ -26,7 +25,6 @@ export default function MapContainer() {
   const currentMap = useGlobalStore((state) => state.currentMap);
   const currentEqPoints = useGlobalStore((state) => state.currentEqPoints);
   const setCurrentMap = useGlobalStore((state) => state.setCurrentMap);
-  // const setCurrentEqPoints = useGlobalStore((state) => state.setCurrentEqPoints);
   const markersRef = useRef<{ [key: string]: L.Marker }>({});
   const router = useRouter();
 
@@ -92,6 +90,7 @@ export default function MapContainer() {
 
   useEffect(() => {
     setCurrentMap(mapRef.current);
+    // eslint-disable-next-line
   }, []);
 
   return <Map currentMap={mapRef.current} />;

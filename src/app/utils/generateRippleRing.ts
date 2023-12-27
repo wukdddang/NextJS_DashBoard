@@ -45,7 +45,6 @@ const getButtonClass = (simpleStatus: any) => {
 function adjustPulseSize(zoomLevel: number) {
   let pulseElements = document.querySelectorAll('.pulse');
 
-  // console.log(zoomLevel);
   pulseElements.forEach((pulse) => {
     pulse.classList.toggle('large-pulse', zoomLevel > 10);
   });
@@ -71,20 +70,13 @@ export default function RippleRing({
     return;
   }
 
-  // console.log(id);
-  // console.log(markersRef.current[id]);
-  // console.log(getProcessStatus(status));
   const processStatus = getProcessStatus(status);
-  // console.log(getEnumKeyByEnumValue(UsgsStatusEnum, processStatus[0]?.phase));
-
-  // console.log(getSimpleProcessStatus(status));
 
   if (!markersRef.current[id]) {
     const marker = L.marker([lat, lng], { icon: customIcon }).addTo(currentMap);
     markersRef.current[id] = marker;
 
     marker.on('click', () => {
-      // currentMap.setView(marker.getLatLng(), 15); // 새로운 줌 레벨
       if (currentMap.getZoom() > MAP_FLY_TO_ZOOM) {
         return;
       }
@@ -138,15 +130,6 @@ export default function RippleRing({
     `
     );
     marker.on('popupopen', async (e) => {
-      // await axios
-      //   .put(`${SERVER_HOST}/usgs/read/${id}`)
-      //   .then((res) => {
-      //     console.log(res);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-
       const markerElement = e.popup.getElement();
       const detailButton = markerElement?.querySelector('#popup-view-detail-button');
       const resetButton = markerElement?.querySelector('#popup-reset-button');
@@ -171,7 +154,6 @@ export default function RippleRing({
       if (resetButton) {
         resetButton.addEventListener('click', () => {
           currentMap.closePopup();
-          // currentMap.setView(MAP_CENTER, MAP_ZOOM);
           currentMap.flyTo(MAP_CENTER, MAP_ZOOM, MAP_FLY_TO_SPEED);
         });
       }

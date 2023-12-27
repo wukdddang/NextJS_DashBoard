@@ -11,22 +11,22 @@ declare module '@tanstack/table-core' {
 }
 
 export const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
-  // Rank the item
+  // 아이템 순위 계산
   const itemRank = rankItem(row.getValue(columnId), value);
-  // console.log(itemRank);
-  // Store the itemRank info
+
+  // 메타 데이터에 아이템 순위 추가
   addMeta({
     itemRank,
   });
 
-  // Return if the item should be filtered in/out
+  // 아이템 순위가 0보다 크면 통과
   return itemRank.passed;
 };
 
 export const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
   let dir = 0;
 
-  // Only sort by rank if the column has ranking information
+  // 아이템 순위 비교
   if (rowA.columnFiltersMeta[columnId]) {
     dir = compareItems(
       rowA.columnFiltersMeta[columnId]?.itemRank!,
@@ -34,6 +34,6 @@ export const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
     );
   }
 
-  // Provide an alphanumeric fallback for when the item ranks are equal
+  // 아이템 순위가 같으면 알파벳 순서로 정렬
   return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
 };

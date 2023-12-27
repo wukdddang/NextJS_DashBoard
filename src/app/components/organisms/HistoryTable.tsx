@@ -1,10 +1,8 @@
 import { Table } from '@tanstack/table-core';
 import { flexRender } from '@tanstack/react-table';
-import { EqPointsType } from '../../store/GlobalStore';
-// import HistoryFilter from './HistoryFilter';
+import { EqPointsType } from '@/app/store/GlobalStore';
 import DebouncedInput from './DebouncedInput';
-// import PaginationNumber from '../containers/PaginationNumber';
-import { getTableCellStyles } from '../../utils/getTableCellStyles';
+import { getTableCellStyles } from '@/app/utils/getTableCellStyles';
 import { MdDownload } from 'react-icons/md';
 
 type Earthquake = {
@@ -97,11 +95,6 @@ export default function HistoryTable({
                                   desc: ' 🔽',
                                 }[header.column.getIsSorted() as string] ?? null}
                               </div>
-                              {/* {header.column.getCanFilter() ? (
-                                <div>
-                                  <HistoryFilter column={header.column} table={table} />
-                                </div>
-                              ) : null} */}
                             </>
                           )}
                         </th>
@@ -190,7 +183,6 @@ export default function HistoryTable({
                   {'>>'}
                 </button>
               </div>
-              {/* <PaginationNumber table={table} pageIndex={pageIndex} pageSize={pageSize} /> */}
               <span className="tw-flex tw-items-center tw-gap-1">
                 <div>
                   <span>Page</span>
@@ -209,18 +201,10 @@ export default function HistoryTable({
                     )}
                   </select>
                 </div>
-                {/* <div>Page</div> */}
                 <strong>of {table.getPageCount()}</strong>
               </span>
             </div>
             <div>{table.getPrePaginationRowModel().rows.length} Rows</div>
-            {/* <div>
-                  <button onClick={() => rerender()}>Force Rerender</button>
-                </div>
-                <div>
-                  <button onClick={() => refreshData()}>Refresh Data</button>
-                </div> */}
-            {/* <pre>{JSON.stringify(table.getState(), null, 2)}</pre> */}
           </div>
         </div>
       </div>

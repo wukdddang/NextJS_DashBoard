@@ -1,15 +1,12 @@
 import { EarthquakesTableType } from '@/app/containers/EarthquakesTableContainer';
-// import HistoryFilter from '@/app/history/HistoryFilter';
 import { getTableCellStyles } from '@/app/utils/getTableCellStyles';
 import { flexRender } from '@tanstack/react-table';
 import { Table } from '@tanstack/table-core';
 import { useEffect } from 'react';
-// import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 type Props = {
   table: Table<EarthquakesTableType>;
   tableTitle: string;
-  // router: AppRouterInstance;
   isHistoryPage?: boolean;
 };
 
@@ -47,11 +44,6 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
                             desc: ' 🔽',
                           }[header.column.getIsSorted() as string] ?? null}
                         </div>
-                        {/* {header.column.getCanFilter() ? (
-                          <div>
-                            <HistoryFilter column={header.column} table={table} />
-                          </div>
-                        ) : null} */}
                       </>
                     )}
                   </th>
@@ -126,7 +118,6 @@ export default function EarthquakesTable({ table, tableTitle, isHistoryPage = fa
               ))}
             </select>
           </div>
-          {/* <div>Page</div> */}
           <strong>of {table.getPageCount()}</strong>
         </span>
       </div>

@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 import { SERVER_HOST, PAGE_LIMIT } from '@/app/common/constants/environment.const';
-// import { Earthquake } from '@/app/containers/HistoryTableContainer';
-// import { EqPointsType } from '@/app/store/GlobalStore';
 import { UsgsStatusEnum } from '../enum/usgs.status.enum';
 
 export interface UsgsListItem {

@@ -6,8 +6,6 @@ import StatusIcons from '@/app/components/atoms/StatusIcons';
 import { currentProcessInfoText } from '@/app/common/constants/CurrentProcessInfoText';
 
 export const processStatusObj = {
-  // Delayed: 'WARN',
-  // Waiting: 'ICON',
   Active: 'INFO',
   Completed: 'SUCCESS',
   Failed: 'ERROR',
@@ -33,7 +31,7 @@ export default function CurrentProcessInfo({ startTime, processStatus }: Props) 
 
   return (
     <div
-      className={`tw-inline-flex tw-w-[450px] tw-items-center tw-gap-4 tw-rounded-md ${statusStyle} tw-bg-opacity-10 tw-px-4 tw-py-2 tw-font-semibold tw-leading-5 tw-text-white tw-shadow-lg tw-transition tw-duration-150 tw-ease-in-out`}
+      className={`tw-inline-flex tw-h-[96px] tw-w-[450px] tw-items-center tw-gap-4 tw-rounded-md ${statusStyle} tw-bg-opacity-10 tw-px-4 tw-py-2 tw-font-semibold tw-leading-5 tw-text-white tw-shadow-lg tw-transition tw-duration-150 tw-ease-in-out`}
     >
       <div className={statusStyle}>
         <StatusIcons processStatus={processStatus} />

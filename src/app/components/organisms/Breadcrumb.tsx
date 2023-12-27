@@ -1,7 +1,5 @@
 import getPascalCase from '@/app/utils/getPascalCase';
 import Link from 'next/link';
-// import CurrentProcessInfo from './CurrentProcessInfo';
-// import useGlobalStore from '@/app/store/GlobalStore';
 
 export default function Breadcrumb({
   pathname,
