@@ -30,9 +30,9 @@ type Props = {
 };
 
 function EarthquakePointTableContainer({ /*data, */ currentEqPoint }: Props) {
-  const processStatus = getProcessStatus(currentEqPoint);
+  const processStatus = getProcessStatus(currentEqPoint.status);
 
-  console.log(processStatus);
+  console.log(processStatus, currentEqPoint);
   return <EarthquakePointTable processStatus={processStatus} currentEqPoint={currentEqPoint} />;
 }
 
