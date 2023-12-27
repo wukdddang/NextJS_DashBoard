@@ -67,7 +67,7 @@ export default function SideBar({
 
         <div className="tw-flex tw-cursor-pointer tw-gap-4 tw-pl-4">
           <Image
-            src="/assets/images/users/profile.png"
+            src="/assets/images/users/1-old.jpg"
             alt="user"
             className="rounded-circle"
             width={40}
