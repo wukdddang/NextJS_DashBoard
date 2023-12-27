@@ -3,7 +3,7 @@ import Loader, { IconStyleClassName } from '@/app/components/atoms/Loader';
 import { RxCross2 } from 'react-icons/rx';
 import { processStatusObj } from '@/app/components/organisms/CurrentProcessInfo';
 
-export default function getStatusIcons({
+export default function StatusIcons({
   processStatus,
 }: {
   processStatus: keyof typeof processStatusObj;
