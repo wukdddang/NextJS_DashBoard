@@ -10,10 +10,10 @@ import {
   getSortedRowModel,
 } from '@tanstack/table-core';
 import { useEffect, useMemo, useState } from 'react';
-import { fuzzyFilter, fuzzySort } from '@/app/history/SortAndFilterByFuzzy';
-import { flexRender, useReactTable } from '@tanstack/react-table';
-import useGlobalStore, { EqPointsType } from '../store/GlobalStore';
-import HistoryTable from '@/app/history/HistoryTable';
+import { fuzzyFilter } from '@/app/utils/sortAndFilterByFuzzy';
+import { useReactTable } from '@tanstack/react-table';
+import { EqPointsType } from '@/app/store/GlobalStore';
+import HistoryTable from '@/app/components/organisms/HistoryTable';
 import { getUsgsList } from '@/app/_lib/getUsgsList';
 import _ from 'lodash';
 import { produce } from 'immer';
@@ -63,84 +63,8 @@ export default function HistoryTableContainer({
           header: () => obj.header(),
           cell: (info) => info.getValue(),
           footer: (props) => props.column.id,
-          enableColumnFilter: false,
         };
       }),
-    // [
-    //   {
-    //     accessorKey: 'mag',
-    //     header: () => 'Magnitude',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //     // enableColumnFilter: false,
-    //   },
-    //   {
-    //     accessorKey: 'date',
-    //     header: () => 'Date',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //   },
-    //   {
-    //     accessorKey: 'location',
-    //     header: () => 'Location',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //   },
-    //   {
-    //     accessorKey: 'lat',
-    //     header: () => 'Lat.',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //   },
-    //   {
-    //     accessorKey: 'lng',
-    //     header: () => 'Lng.',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //   },
-    //   {
-    //     accessorKey: 'innerProcessStatus',
-    //     header: () => 'Processing Status',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //   },
-    //   {
-    //     accessorKey: 'algorithms',
-    //     header: () => 'Algorithms',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //   },
-    //   {
-    //     accessorKey: 'platform',
-    //     header: () => 'Platform',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //   },
-    //   {
-    //     header: 'Processed Data',
-    //     footer: (props) => props.column.id,
-    //     columns: [
-    //       {
-    //         accessorKey: 'preData',
-    //         header: () => 'Pre-Data',
-    //         cell: (info) => info.getValue(),
-    //         footer: (props) => props.column.id,
-    //       },
-    //       {
-    //         accessorKey: 'postData',
-    //         header: () => 'Post-Data',
-    //         cell: (info) => info.getValue(),
-    //         footer: (props) => props.column.id,
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     accessorKey: 'downloads',
-    //     header: () => 'Downloads',
-    //     cell: (info) => info.getValue(),
-    //     footer: (props) => props.column.id,
-    //   },
-    // ]
     []
   );
 
@@ -178,7 +102,7 @@ export default function HistoryTableContainer({
 
         return {
           id: item.id,
-          mag: String(item.properties.mag),
+          mag: String(item.properties.mag.toFixed(1)),
           date: item.properties.createdAt,
           // location:
           //   item.properties.place.split('of').length > 1
