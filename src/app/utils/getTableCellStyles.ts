@@ -43,7 +43,7 @@ export const getTableCellStyles = <T>(cell: Cell<T, unknown>, isHistoryPage: boo
     cellStyle = { ...cellStyle, fontSize: '12px' };
   } else if (cell.column.id === 'status') {
     cellStyle = { ...cellStyle, fontWeight: 'bold' };
-    if (cell.getValue() === UsgsStatusEnum.COMPLETE) {
+    if (cell.getValue() === UsgsStatusEnum.COMPLETED) {
       cellStyle = { ...cellStyle, color: successColor };
     } else if (cell.getValue() === UsgsStatusEnum.STOPPED) {
       cellStyle = { ...cellStyle, color: errorColor };

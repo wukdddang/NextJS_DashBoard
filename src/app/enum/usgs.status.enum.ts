@@ -4,7 +4,7 @@ export enum UsgsStatusEnum {
   STOPPED = 'STOPPED',
   WAITING = 'WAITING',
   ACTIVE = 'ACTIVE',
-  COMPLETE = 'COMPLETE',
+  COMPLETED = 'COMPLETED',
   FAILED = 'FAILED',
   PAUSED = 'PAUSED',
 }
