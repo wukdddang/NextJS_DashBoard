@@ -1,18 +1,12 @@
 import { KIND_OF_MAP_TILES } from '@/app/common/constants/MapTiles';
 import Image from 'next/image';
-// import { UserTracker } from '@/domain/model/UserTracker';
 
 type Props = {
   setCurrentTileLayer: (layer: KIND_OF_MAP_TILES) => void;
   layers: KIND_OF_MAP_TILES[];
-  // track: UserTracker['track'];
 };
 
-export default function TileLayerButtons({
-  setCurrentTileLayer,
-  layers,
-  // track,
-}: Props) {
+export default function TileLayerButtons({ setCurrentTileLayer, layers }: Props) {
   return (
     <div className="tw-absolute tw-bottom-[5%] tw-right-[3%] tw-z-10 tw-flex tw-flex-col tw-gap-[10px]">
       {layers.map((layer) => {
@@ -26,7 +20,6 @@ export default function TileLayerButtons({
             height={60}
             onClick={() => {
               setCurrentTileLayer(layer);
-              // track('tileLayers:tilelayer-button:click');
             }}
             role={layer}
             style={{
